@@ -7,6 +7,15 @@ para instalação e execução do aplicativo na sua máquina local.
 
 Primeiramente, é necessário que se tenha Python 3.6+ instalado em sua máquina, bem como git e o Django. Para a isntalação das ferramentas necessárias, refira-se às referências específicas de cada uma, disponíveis na iternet.
 
+Caso você deseje rodar a aplicação em um ambiente virtual, primeiramente selecione a pasta desejada para armazenar o projeto e, dentro dela, após a instalação do Pyhton, crie um ambiente virtual executanto os seguintes comandos:
+
+```
+python -m venv env
+./env/bin/activate
+```
+
+Uma pasta `env` deve ser criada e o ambiente virtual executado do seu terminal. Dentro dessa mesma pasta, com o ambiente virtual ativo, instale o django e o git para seguir com a instalação e execução do aplicativo.
+
 ## Instalação
 
 Após a instalação das ferramentas necessárias para executar a aplicação, para clonar esse repositório na sua máquina basta clicar no botão `code` e copiar o endereço mostrado por ele. Em sua máquina, dentro de uma pasta qualquer desejada, abra um terminal e execute o comando abaixo, subtituindo 'LinkCopiado' pelo endereço que você copiou:
