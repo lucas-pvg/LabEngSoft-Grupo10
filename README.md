@@ -15,14 +15,14 @@ Após a instalação das ferramentas necessárias para executar a aplicação, p
 git clone LinkCopiado
 ```
 
-O repositório AAAAAA deve aparecer na pasta em que você executou o comando.
+O repositório LabEngSoft-Grupo10 deve aparecer na pasta em que você executou o comando.
 
 ## Execução do Aplicativo em um Servidor Local
 
-Após clonar o repositório do projeto, entre na pasta AAAAAAAAAA que foi criada e execute o aplicativo em um servidor local. Para fazer isso, basta rodar os comandos abaixo:
+Após clonar o repositório do projeto, entre na pasta LabEngSoft-Grupo10 que foi criada e execute o aplicativo em um servidor local. Para fazer isso, basta rodar os comandos abaixo:
 
 ```
-cd AAAAAA (caso não esteja na pasta raiz do repositório clonado)
+cd LabEngSoft-Grupo10 (caso não esteja na pasta raiz do repositório clonado)
 python manage.py runserver
 ```
 
