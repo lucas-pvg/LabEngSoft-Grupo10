@@ -9,8 +9,8 @@ class VooModelTest(TestCase):
         Voo.objects.create(
             codigoVoo = 1234,
             companhiaAerea = 'LabSoft',
-            partidaprevisao = datetime.strptime('10/06/22 14:00', '%d/%m/%y %H:%M'),
-            chegadaPrevisao = datetime.strptime('10/06/22 17:40', '%d/%m/%y %H:%M'),
+            partidaPrevista = datetime.strptime('10/06/22 14:00', '%d/%m/%y %H:%M'),
+            chegadaPrevista = datetime.strptime('10/06/22 17:40', '%d/%m/%y %H:%M'),
             status = 'Aguardo',
             aeroportoOrigem = 'CGH',
             aeroportoDestino = 'BSB',
@@ -19,8 +19,8 @@ class VooModelTest(TestCase):
         Voo.objects.create(
             codigoVoo = 5678,
             companhiaAerea = 'LabSoft',
-            partidaprevisao = datetime.strptime('11/06/22 14:00', '%d/%m/%y %H:%M'),
-            chegadaPrevisao = datetime.strptime('11/06/22 17:40', '%d/%m/%y %H:%M'),
+            partidaPrevista = datetime.strptime('11/06/22 14:00', '%d/%m/%y %H:%M'),
+            chegadaPrevista = datetime.strptime('11/06/22 17:40', '%d/%m/%y %H:%M'),
             status = 'Aguardo',
             aeroportoOrigem = 'CGH',
             aeroportoDestino = 'BSB',
