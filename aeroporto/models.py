@@ -3,7 +3,7 @@ import datetime
 
 # Create your models here.
 class Voo(models.Model):
-    idVoo = models.IntegerField(primary_key=True, auto=True)
+    idVoo = models.IntegerField(primary_key=True, unique=True)
     codigoVoo = models.IntegerField(max_length=100, null=False)
     companhiaAerea = models.CharField(max_length=100, null=False)
     partidaprevisao = models.DateTimeField(null=False)
@@ -19,9 +19,10 @@ class Voo(models.Model):
 
 
 class Usuario(models.Model):
-    idUsuario = models.IntegerField(primary_key=True, auto=True)
+    idUsuario = models.IntegerField(primary_key=True, unique=True)
+    nome = models.CharField(max_length=100, null=False)
     cargo = models.CharField(max_length=100, null=False)
-    companhiaAerea = models.CharField(max_length=100, null=False)
+    companhiaAerea = models.CharField(max_length=100, null=True)
     aeroportoTrabalho = models.CharField(max_length=100, null=False)
     class Meta:
         db_table = 'usuarios'
