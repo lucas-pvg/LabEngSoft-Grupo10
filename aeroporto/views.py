@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-def bookview(request):
+def aeroportoview(request):
     return render(request, 'FIRST.html')
     
