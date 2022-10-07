@@ -32,6 +32,19 @@ class VooModelTest(TestCase):
         self.assertEqual(Voo_1.idVoo, 1)
         self.assertEqual(Voo_2.idVoo, 2)
         self.assertFalse(Voo_1.idVoo == Voo_2.idVoo)
+    
+    def test_update(self):
+        Voo_1 = Voo.objects.get(codigoVoo=1234)
+        Voo_1.partidaReal = datetime.strptime('11/06/22 14:30', '%d/%m/%y %H:%M')
+        Voo_1.save()
+        
+        Voo_1 = Voo.objects.get(codigoVoo=1234)
+        self.assertEqual(Voo_1.partidaReal, datetime.strptime('11/06/22 14:30', '%d/%m/%y %H:%M'))
+    
+    def test_delete(self):
+        pre_length = len(Voo.objects.all())
+        Voo.objects.first().delete()
+        self.assertEqual(pre_length, pre_length-1)
 
 
 class UsuarioModelTest(TestCase):
@@ -47,3 +60,16 @@ class UsuarioModelTest(TestCase):
     def test_criacao_id(self):
         usuario_1 = Usuario.objects.get(nome="Sophia Asakura Lie")
         self.assertEqual(usuario_1.idUsuario, 1)
+        
+    def test_update(self):
+        Usuario_1 = Usuario.objects.get(nome="Sophia Asakura Lie")
+        Usuario_1.aeroportoTrabalho = 'BSB'
+        Usuario_1.save()
+        
+        Usuario_1 = Usuario.objects.get(nome="Sophia Asakura Lie")
+        self.assertEqual(Usuario_1.aeroportoTrabalho, 'BSB')
+    
+    def test_delete(self):
+        pre_length = len(Usuario.objects.all())
+        Usuario.objects.first().delete()
+        self.assertEqual(pre_length, pre_length-1)
