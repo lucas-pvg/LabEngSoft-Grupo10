@@ -19,5 +19,9 @@ from aeroporto import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('FIRST', views.aeroportoview)
+    path('login', views.loginview),
+    path('main', views.mainview),
+    path('crud', views.crudview),
+    path('monitoramento', views.monitoramentoview),
+    path('relatorio', views.relatorioview)
 ]
