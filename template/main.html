@@ -1,9 +1,35 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    </head>
     <body>
-        <p>
-            TELA PRINCIPAL
-        </p>
+        <div class="nav-container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="">Tela Principal</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto"></ul>
+                    <span class="navbar-text">
+                        <a class="nav-link" href="">Logout<span class="sr-only">(current)</span></a>
+                    </span>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="box">
+                <button type="button" class="btn btn-secondary btn-lg">CRUD</button>
+                <button type="button" class="btn btn-secondary btn-lg">Monitoramento</button>
+                <button type="button" class="btn btn-secondary btn-lg">Relatório</button>
+            </div>
+        </div>
     </body>
 </html>
