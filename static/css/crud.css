@@ -1,0 +1,18 @@
+.container {
+    width: 100vw;
+    height: 90vh;
+    background: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    width: 300px;
+    background: #fff;
+}
+
+p {
+    text-align: center;
+}
