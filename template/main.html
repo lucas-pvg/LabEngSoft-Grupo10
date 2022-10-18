@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto"></ul>
                 <span class="navbar-text">
-                        <a class="nav-link" href="">Logout<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'login' %}">Logout<span class="sr-only">(current)</span></a>
                 </span>
             </div>
         </nav>
@@ -29,17 +29,17 @@
     <div class="container">
         <div class="box">
             <button type="button" class="btn btn-secondary btn-lg">
-                <a href= "{% url 'crud' %}">
+                <a class="link-button" href= "{% url 'crud' %}">
                     CRUD
                 </a>
             </button>
             <button type="button " class="btn btn-secondary btn-lg">
-                <a href= "{% url 'monitoramento' %}">
+                <a class="link-button" href= "{% url 'monitoramento' %}">
                     Monitoramento
                 </a>
             </button>
             <button type="button " class="btn btn-secondary btn-lg">
-                <a href=" {% url 'relatorios' %}">
+                <a class="link-button" href=" {% url 'relatorio' %}">
                     Relatório
                 </a>
             </button>
