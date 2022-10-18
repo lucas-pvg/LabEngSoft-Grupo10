@@ -2,36 +2,39 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-        <link rel="stylesheet" href="{% static 'css/crud.css' %}">
-        <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
-    </head>
-    <body>
-        <div class="nav-container">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">Tela de Relatório</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/crud.css' %}">
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+    <div class="nav-container">
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Tela de Relatório</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Tela Principal<span class="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-                    <span class="navbar-text">
-                        <a class="nav-link" href="#">Logout<span class="sr-only">(current)</span></a>
-                    </span>
-                </div>
-            </nav>
-        </div>
-
-        <div class="container">
-            <div class="box">
-                <p>Você está na tela de Relatório</p>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'main'%}">Tela Principal<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                        <a class="nav-link" href="{% url 'login'%}">Logout<span class="sr-only">(current)</span></a>
+                </span>
             </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="box">
+            <p>Você está na tela de Relatório</p>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
