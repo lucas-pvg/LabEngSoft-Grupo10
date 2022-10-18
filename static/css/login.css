@@ -17,3 +17,8 @@
 .login-card {
     margin: 2rem;
 }
+
+.link-button {
+    color: #fff !important;
+    text-decoration: none !important;
+}
