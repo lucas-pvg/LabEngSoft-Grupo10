@@ -36,4 +36,6 @@ python manage.py runserver
 ```
 
 Dessa forma, seu terminal deve executar o aplicativo em um servidor local e retornar o caminho para que você possa acessá-lo. Ele deve se parecer com algo assim 
-`http://127.0.0.1:8000/`, tendo em mente que o número do servidor pode mudar. Por fim, basta abrir seu navegador e colar este endereço finalizado por `/FIRST`e o aplicativo será executado na sua tela, ou seja `http://127.0.0.1:8000/FIRST`.
+`http://127.0.0.1:8000/`, tendo em mente que o número do servidor pode mudar. Por fim, basta abrir seu navegador e colar este endereço finalizado por `/main`e o aplicativo será executado na sua tela, ou seja `http://127.0.0.1:8000/main`.
+
+Com o projeto aberto em sua máquina, é possível acessar as demais telas tanto realizando o login e navegando na própria aplicação quanto acessando diretamente cada página substituindo o final `/main` pelas outras telas disponíveis neste projeto.
