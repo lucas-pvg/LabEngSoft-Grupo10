@@ -6,7 +6,7 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/crud.css' %}">
+    <link rel="stylesheet" href="{% static 'css/monitoramento.css' %}">
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
 </head>
 
@@ -32,7 +32,15 @@
 
     <div class="container">
         <div class="box">
-            <p>Você está na tela de Monitoramento</p>
+            <form class="row g-3">
+                <div class="col-auto mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Digite o número do voo:</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="1234">
+                </div>
+                <div class="col-auto div-pesquisar">
+                    <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>
