@@ -5,7 +5,7 @@ para instalação e execução do aplicativo na sua máquina local.
 
 ## Pré-Requisitos
 
-Primeiramente, é necessário que se tenha Python 3.6+ instalado em sua máquina, bem como git e o Django. Para a isntalação das ferramentas necessárias, refira-se às referências específicas de cada uma, disponíveis na iternet.
+Primeiramente, é necessário que se tenha Python 3.6+ instalado em sua máquina, bem como git e o Django. Para a instalação das ferramentas necessárias, refira-se às referências específicas de cada uma, disponíveis na iternet.
 
 Caso você deseje rodar a aplicação em um ambiente virtual, primeiramente selecione a pasta desejada para armazenar o projeto e, dentro dela, após a instalação do Pyhton, crie um ambiente virtual executanto os seguintes comandos:
 
@@ -14,7 +14,11 @@ python -m venv env
 ./env/bin/activate
 ```
 
-Uma pasta `env` deve ser criada e o ambiente virtual executado do seu terminal. Dentro dessa mesma pasta, com o ambiente virtual ativo, instale o django e o git para seguir com a instalação e execução do aplicativo.
+Uma pasta `env` deve ser criada e o ambiente virtual executado do seu terminal. Dentro dessa mesma pasta, com o ambiente virtual ativo, instale o django e o git para seguir com a instalação e execução do aplicativo. Para a instalação do django, execute o seguindo comando no terminal do seu ambiente virtual:
+
+```
+pip install django
+```
 
 ## Instalação
 
