@@ -1,16 +1,13 @@
 .container {
-    width: 100vw;
-    height: 90vh;
-    background: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .box {
-    width: 300px;
-    background: #fff;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 p {
