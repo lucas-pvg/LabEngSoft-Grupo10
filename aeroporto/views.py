@@ -28,7 +28,7 @@ def voo_search_view(request):
     voo_object = None
 
     try:
-        query = int(query_dict.get('query'))
+        query = int(query_dict.get('voo'))
     except:
         query = None
 
