@@ -20,7 +20,7 @@ from aeroporto import views
 urlpatterns = [
     path('', views.loginview, name='login'),
     path('main', views.mainview, name='main'),
-    path('crud', views.crudview, name='crud'),
+    path('crud', views.CrudView.as_view(), name='crud'),
     path('monitoramento', views.monitoramentoview, name='monitoramento'),
     path('relatorio', views.relatorioview, name='relatorio')
 ]

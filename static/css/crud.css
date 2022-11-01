@@ -9,8 +9,9 @@
 }
 
 .box {
-    width: 300px;
-    background: #fff;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 p {
