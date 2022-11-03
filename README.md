@@ -14,10 +14,11 @@ python -m venv env
 ./env/bin/activate
 ```
 
-Uma pasta `env` deve ser criada e o ambiente virtual executado do seu terminal. Dentro dessa mesma pasta, com o ambiente virtual ativo, instale o django e o git para seguir com a instalação e execução do aplicativo. Para a instalação do django, execute o seguindo comando no terminal do seu ambiente virtual:
+Uma pasta `env` deve ser criada e o ambiente virtual executado do seu terminal. Dentro dessa mesma pasta, com o ambiente virtual ativo, instale o django, o reportlab e o git para seguir com a instalação e execução do aplicativo. Para a instalação do django e do reportlab, execute os seguintes comandos no terminal do seu ambiente virtual:
 
 ```
 pip install django
+pip install reportlab
 ```
 
 ## Instalação
