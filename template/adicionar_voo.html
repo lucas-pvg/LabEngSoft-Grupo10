@@ -12,7 +12,7 @@
 <body>
     <div class="nav-container">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Adicionar Novo Voo</a>
+            <a class="navbar-brand" href="#">Sistema de Monitoramento de Voo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -29,16 +29,23 @@
         </nav>
     </div>
 
-    <h2>
-        Você está na tela de adicionar voo
-    </h2>
+    <div class="container-xl p-5">
+        <h2>
+            Adicionar Novo Voo
+        </h2>
 
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %} {{ form.as_p}}
-            <button class="btn btn-secondary">Adicionar</button>
-        </form>
+        <br>
+
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %} {{ form.as_p}}
+                <br>
+                <button class="btn btn-secondary">Adicionar</button>
+                <a class="btn btn-secondary" href="{% url 'crud' %}">Cancelar</a>
+            </form>
+        </div>
     </div>
+
 
 </body>
 

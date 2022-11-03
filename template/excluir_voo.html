@@ -12,7 +12,7 @@
 <body>
     <div class="nav-container">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Excluir Voo</a>
+            <a class="navbar-brand" href="#">Sistema de Monitoramento de Voo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -29,25 +29,22 @@
         </nav>
     </div>
 
-    <h2>
-        Você está na tela de excluir voo
-    </h2>
+    <div class="container-xl p-5">
 
-    <h3>
-        Deletar {{ voo.codigoVoo }}?
-    </h3>
+        <h2>
+            Deletar Voo {{ voo.codigoVoo}}?
+        </h2>
 
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %}
-            <strong>
-                Tem certeza?
-            </strong>
-            <button class="btn btn-secondary">Excluir</button>
-        </form>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                <br>
+                <button class="btn btn-secondary">Excluir</button>
+                <a class="btn btn-secondary" href="{% url 'crud' %}">Cancelar</a>
+            </form>
+        </div>
+
     </div>
-
-    <a class="btn btn-secondary" href="{% url 'crud' %}">Voltar</a>
 
 </body>
 

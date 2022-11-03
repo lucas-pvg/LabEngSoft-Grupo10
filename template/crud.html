@@ -6,14 +6,13 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/crud.css' %}">
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
 </head>
 
 <body>
     <div class="nav-container">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Tela de CRUD</a>
+            <a class="navbar-brand" href="#">Sistema de Monitoramento de Voo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,17 +29,43 @@
         </nav>
     </div>
 
-    <h1>Operações de Voo</h1>
+    <div class="container-xl p-5">
 
-    <a class="btn btn-secondary btn-lg" href="{% url 'adicionar_voo' %}">Adicionar Voo</a>
+        <h1>Operações de Voo</h1>
 
-    <ul>
-        {% for voo in object_list %}
-        <li>
-            <a href="{% url 'ver_voo' voo.pk %}">{{ voo.codigoVoo }}</a> - {{ voo.companhiaAerea }} - <a href="{% url 'editar_voo' voo.pk %}">Editar</a> - <a href="{% url 'excluir_voo' voo.pk %}">Excluir</a>
-        </li>
-        {% endfor %}
-    </ul>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a class="btn btn btn-secondary btn-lg me-md-2" href="{% url 'adicionar_voo' %} ">Adicionar Novo Voo</a>
+        </div>
+
+        <br>
+
+        <table class="table table-light table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col ">Código do Voo</th>
+                    <th scope="col ">Companhia Aérea</th>
+                    <th scope="col ">Rota</th>
+                    <th scope="col ">Aeroporto de Origem</th>
+                    <th scope="col ">Aeroporto de Destino</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for voo in object_list %}
+                <tr>
+                    <th scope="row "><a href="{% url 'ver_voo'  voo.pk %} ">{{ voo.codigoVoo }}</a></th>
+                    <td> {{ voo.companhiaAerea }} </td>
+                    <td> {{ voo.rota }} </td>
+                    <td> {{ voo.aeroportoOrigem }} </td>
+                    <td> {{ voo.aeroportoDestino }} </td>
+                    <td> <a href="{% url 'editar_voo' voo.pk %} ">Editar</a> </td>
+                    <td> <a href="{% url 'excluir_voo' voo.pk %} ">Excluir</a> </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 </body>
 

@@ -23,6 +23,12 @@ class EditVooView(UpdateView):
     form_class = VooEditForm
     template_name = 'editar_voo.html'
     
+    def getInfos(request):
+        
+        voo = Voo.objects.all()
+        
+        return render(request, 'filmes_detalhes.html')
+    
 class DeleteVooView(DeleteView):
     model = Voo
     template_name = 'excluir_voo.html'
