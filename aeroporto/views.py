@@ -42,7 +42,25 @@ def mainview(request):
     return render(request, 'main.html')
 
 def monitoramentoview(request):
-    return render(request, 'monitoramento.html')
+    context = {}
+    return render(request, 'monitoramento/monitoramento.html', context=context)
 
 def relatorioview(request):
     return render(request, 'relatorio.html')
+
+
+def voo_search_view(request):
+    query_dict = request.GET
+    voo_object = None
+    try:
+        query = int(query_dict.get('voo'))
+    except:
+        query = None
+
+    if query is not None:
+            voo_object = Voo.objects.get(codigoVoo=query)
+    context = {
+        "voo": voo_object
+    }
+    
+    return render(request, 'monitoramento/voosearch.html', context=context)

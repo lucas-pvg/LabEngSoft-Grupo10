@@ -12,3 +12,4 @@ urlpatterns = [
     path('monitoramento/', monitoramentoview, name='monitoramento'),
     path('relatorios/', relatorioview, name='relatorios'),
 ]
+

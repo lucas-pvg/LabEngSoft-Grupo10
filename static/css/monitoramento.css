@@ -1,20 +1,21 @@
 .container {
-    width: 100vw;
-    height: 90vh;
+    width: auto !important;
+    max-width: 100vw !important;
+    height: 85vh !important;
     background: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 7rem;
 }
 
 p {
     text-align: center;
 }
 
-.box {
-    width: fit-content;
+.search-box {
     margin: 1rem;
+    margin-left: 0rem;
+    margin-top: 2rem;
 }
 
 .btn {
@@ -29,4 +30,18 @@ p {
 .row {
     margin-right: .5rem !important;
     margin-left: .5rem !important;
+    align-items: center;
+}
+
+.table-voo {
+    padding-right: 5rem !important;
+    padding-left: 5rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 2rem !important;
+}
+
+.titulo {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }

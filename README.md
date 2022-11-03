@@ -14,10 +14,11 @@ python -m venv env
 ./env/bin/activate
 ```
 
-Uma pasta `env` deve ser criada e o ambiente virtual executado do seu terminal. Dentro dessa mesma pasta, com o ambiente virtual ativo, instale o django e o git para seguir com a instalação e execução do aplicativo. Para a instalação do django, execute o seguindo comando no terminal do seu ambiente virtual:
+Uma pasta `env` deve ser criada e o ambiente virtual executado do seu terminal. Dentro dessa mesma pasta, com o ambiente virtual ativo, instale o django, o reportlab e o git para seguir com a instalação e execução do aplicativo. Para a instalação do django e do reportlab, execute os seguintes comandos no terminal do seu ambiente virtual:
 
 ```
 pip install django
+pip install reportlab
 ```
 
 ## Instalação
@@ -40,6 +41,6 @@ python manage.py runserver
 ```
 
 Dessa forma, seu terminal deve executar o aplicativo em um servidor local e retornar o caminho para que você possa acessá-lo. Ele deve se parecer com algo assim 
-`http://127.0.0.1:8000/`, tendo em mente que o número do servidor pode mudar. Por fim, basta abrir seu navegador e colar este endereço finalizado por `/main`e o aplicativo será executado na sua tela, ou seja `http://127.0.0.1:8000/main`.
+`http://127.0.0.1:8000/`, tendo em mente que o número do servidor pode mudar, apresentando a tela de login do sistema de monitoramento. Para acessar a página principal do sistema, basta abrir seu navegador e colar este endereço finalizado por `/main`e o aplicativo será executado na sua tela, ou seja `http://127.0.0.1:8000/main`.
 
 Com o projeto aberto em sua máquina, é possível acessar as demais telas tanto realizando o login e navegando na própria aplicação quanto acessando diretamente cada página substituindo o final `/main` pelas outras telas disponíveis neste projeto.
