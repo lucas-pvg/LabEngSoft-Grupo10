@@ -13,7 +13,7 @@
 <body>
     <div class="nav-container">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Tela de CRUD</a>
+            <a class="navbar-brand" href="#">Detalhes do Voo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,17 +30,20 @@
         </nav>
     </div>
 
-    <h1>Operações de Voo</h1>
+    <h1>Ver Infos do Voo</h1>
 
-    <a class="btn btn-secondary btn-lg" href="{% url 'adicionar_voo' %}">Adicionar Voo</a>
+    <h2>
+        Código do Voo: {{ voo.codigoVoo }}
+    </h2>
 
-    <ul>
-        {% for voo in object_list %}
-        <li>
-            <a href="{% url 'ver_voo' voo.pk %}">{{ voo.codigoVoo }}</a> - {{ voo.companhiaAerea }} - <a href="{% url 'editar_voo' voo.pk %}">Editar</a> - <a href="{% url 'excluir_voo' voo.pk %}">Excluir</a>
-        </li>
-        {% endfor %}
-    </ul>
+    <br /> Companhia Aérea: {{ voo.companhiaAerea}}
+    <br /> Partida Prevista do Voo: {{ voo.partidaPrevista}}
+    <br /> Chegada Prevista do Voo: {{ voo.chegadaPrevista}}
+    <br /> Rota do Voo: {{ voo.rota}}
+    <br /> Aeroporto de Origem do Voo: {{ voo.aeroportoOrigem}}
+    <br /> Aeroporto de Destino do Voo: {{ voo.aeroportoDestino}}
+
+    <a class="btn btn-secondary" href="{% url 'crud' %}">Voltar</a>
 
 </body>
 

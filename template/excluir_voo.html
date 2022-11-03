@@ -6,14 +6,13 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/crud.css' %}">
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
 </head>
 
 <body>
     <div class="nav-container">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Tela de Excluir Voo</a>
+            <a class="navbar-brand" href="#">Excluir Voo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,11 +29,26 @@
         </nav>
     </div>
 
-    <div class="container">
-        <div class="box">
-            <p>Você está na tela de CRUD</p>
-        </div>
+    <h2>
+        Você está na tela de excluir voo
+    </h2>
+
+    <h3>
+        Deletar {{ voo.codigoVoo }}?
+    </h3>
+
+    <div class="form-group">
+        <form method="POST">
+            {% csrf_token %}
+            <strong>
+                Tem certeza?
+            </strong>
+            <button class="btn btn-secondary">Excluir</button>
+        </form>
     </div>
+
+    <a class="btn btn-secondary" href="{% url 'crud' %}">Voltar</a>
+
 </body>
 
 </html>
