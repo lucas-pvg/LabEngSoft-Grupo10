@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="nav-container">
+    <div class="nav-container fixed-top">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Tela de Monitoramento</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,16 +31,20 @@
     </div>
 
     <div class="container">
-        <div class="box">
-            <form class="row g-3">
+        <div class="search-box">
+            <form class="row g-3" method="GET">
                 <div class="col-auto mb-3">
                     <label for="formGroupExampleInput" class="form-label">Digite o número do voo:</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="1234">
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="1234" name="voo">
                 </div>
                 <div class="col-auto div-pesquisar">
                     <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
                 </div>
             </form>
+        </div>
+
+        <div class="monitoramento-form">
+
         </div>
     </div>
 </body>
