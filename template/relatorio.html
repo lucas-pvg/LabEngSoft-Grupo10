@@ -6,14 +6,14 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/crud.css' %}">
+    <link rel="stylesheet" href="{% static 'css/relatorio.css' %}">
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
 </head>
 
 <body>
     <div class="nav-container">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Tela de Relatório</a>
+            <a class="navbar-brand" href="{% url 'main'%}">Sistema de Monitoramento de Voo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -30,11 +30,43 @@
         </nav>
     </div>
 
-    <div class="container">
-        <div class="box">
-            <p>Você está na tela de Relatório</p>
+    <div class="container-xl p-5 box-tabela">
+
+        <h2>Selecione o relatório de voo desejado</h2>
+
+        <br>
+
+        <div class="card-group tabela">
+            <div class="card card text-center">
+                <div class="card-body ">
+                    <h5 class="card-title ">Partidas e Chegadas Previstas</h5>
+                    <p class="card-text ">Este relatório fornece as informações de partidas e chegadas previstas comparadas ao tempos reais a partir dos voos registrados no sistema</p>
+                </div>
+                <div class="card-footer ">
+                    <a href="#" class="btn btn-secondary ">Gerar Relatório</a>
+                </div>
+            </div>
+            <div class="card card text-center">
+                <div class=" card-body ">
+                    <h5 class="card-title ">Tempos Reais de Voo</h5>
+                    <p class="card-text ">Este relatório fornece as informações de tempos totais reais de voo a partir dos voos registrados no sistema</p>
+                </div>
+                <div class="card-footer ">
+                    <a href="#" class="btn btn-secondary ">Gerar Relatório</a>
+                </div>
+            </div>
+            <div class="card card text-center ">
+                <div class="card-body ">
+                    <h5 class="card-title ">Atrasos</h5>
+                    <p class="card-text ">Este relatório fornece as informações de atrasos de voo levando em consideração o tempo previsto e o tempo real de voo a partir dos voos registrados no sistema</p>
+                </div>
+                <div class="card-footer ">
+                    <a href="#" class="btn btn-secondary ">Gerar Relatório</a>
+                </div>
+            </div>
         </div>
     </div>
+
 </body>
 
 </html>
