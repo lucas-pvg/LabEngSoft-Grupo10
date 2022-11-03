@@ -26,27 +26,15 @@ def relatorioview(request):
 def voo_search_view(request):
     query_dict = request.GET
     voo_object = None
-
     try:
         query = int(query_dict.get('voo'))
     except:
         query = None
 
     if query is not None:
-        # Voo.objects.create(
-        #     codigoVoo = query,
-        #     companhiaAerea = 'LabSoft',
-        #     partidaPrevista = datetime.strptime('10/06/22 14:00', '%d/%m/%y %H:%M'),
-        #     chegadaPrevista = datetime.strptime('10/06/22 17:40', '%d/%m/%y %H:%M'),
-        #     status = 'Aguardo',
-        #     aeroportoOrigem = 'CGH',
-        #     aeroportoDestino = 'BSB',
-        # )
-
-        voo_object = Voo.objects.get(codigoVoo=query)
-
+            voo_object = Voo.objects.get(codigoVoo=query)
     context = {
-        "object": voo_object
+        "voo": voo_object
     }
-
+    
     return render(request, 'monitoramento/voosearch.html', context=context)

@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="nav-container">
+    <div class="nav-container fixed-top">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="#">Tela de Monitoramento</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,8 +31,11 @@
     </div>
 
     <div class="container">
-        <div class="search-box">
-            <form class="row g-3">
+        <div class="search-box row">
+            <div class="col-md titulo">
+                <h1 titulo-text>Tela de Monitoramento</h1>
+            </div>
+            <form class="row g-3 search-form col-auto">
                 <div class="col-auto mb-3">
                     <label for="formGroupExampleInput" class="form-label">Digite o número do voo:</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="1234" name="voo">
@@ -43,11 +46,54 @@
             </form>
         </div>
 
-        <div class="monitoramento-form">
-            {% if object %}
-            <h1>{{ object.codigoVoo }}</h1>
-            <p>{{ object.companhiaAerea }}</p>
-            {% endif %}
+        <div class="container-xl table-voo">
+
+            <h2>Monitorando Voo: {{ voo.codigoVoo }} </h2>
+    
+            <br>
+    
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Companhia Aérea</th>
+                        <td scope="col">{{ voo.companhiaAerea}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Partida Prevista do Voo</th>
+                        <td> {{voo.partidaPrevista}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Chegada Prevista do Voo</th>
+                        <td> {{voo.chegadaPrevista}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Rota do Voo</th>
+                        <td> {{voo.rota}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Aeroporto de Origem do Voo</th>
+                        <td> {{ voo.aeroportoOrigem}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Aeroporto de Destino do Voo</th>
+                        <td> {{ voo.aeroportoDestino}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Status do Voo</th>
+                        <td> {{ voo.status}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Partida Real do Voo</th>
+                        <td> {{ voo.partidaReal}} </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Chegada Real do Voo</th>
+                        <td> {{ voo.chegadaReal}} </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
