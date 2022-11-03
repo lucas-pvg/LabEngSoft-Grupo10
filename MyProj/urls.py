@@ -18,10 +18,13 @@ from django.urls import path
 from aeroporto import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('login', views.loginview, name='login'),
+    path('', views.loginview, name='login'),
     path('main', views.mainview, name='main'),
-    path('crud', views.crudview, name='crud'),
+    path('crud', views.CrudView.as_view(), name='crud'),
+    path('crud/ver_voo/<int:pk>', views.DetailVooView.as_view(), name='ver_voo'),
+    path('crud/adicionar_voo/', views.AddVooView.as_view(), name='adicionar_voo'),
+    path('crud/editar_voo/<int:pk>', views.EditVooView.as_view(), name='editar_voo'),
+    path('crud/excluir_voo/<int:pk>', views.DeleteVooView.as_view(), name='excluir_voo'),
     path('monitoramento', views.monitoramentoview, name='monitoramento'),
     path('relatorio', views.relatorioview, name='relatorio')
 ]

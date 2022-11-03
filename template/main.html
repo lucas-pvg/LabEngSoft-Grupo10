@@ -13,7 +13,7 @@
 <body>
     <div class="nav-container">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="">Tela Principal</a>
+            <a class="navbar-brand" href="">Sistema de Monitoramento de Voo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -26,25 +26,43 @@
         </nav>
     </div>
 
-    <div class="container">
-        <div class="box">
-            <button type="button" class="btn btn-secondary btn-lg">
-                <a class="link-button" href= "{% url 'crud' %}">
-                    CRUD
-                </a>
-            </button>
-            <button type="button " class="btn btn-secondary btn-lg">
-                <a class="link-button" href= "{% url 'monitoramento' %}">
-                    Monitoramento
-                </a>
-            </button>
-            <button type="button " class="btn btn-secondary btn-lg">
-                <a class="link-button" href=" {% url 'relatorio' %}">
-                    Relatório
-                </a>
-            </button>
+    <div class="container-xl p-5 box-tabela">
+
+        <h2>Bem-Vindo ao Sistema de Monitoramento de Voos! O que deseja fazer?</h2>
+
+        <br>
+
+        <div class="card-group tabela">
+            <div class="card card text-center">
+                <div class="card-body ">
+                    <h5 class="card-title ">Operar Voos</h5>
+                    <p class="card-text ">Acesse esta página caso queira criar, editar ou excluir um voo do sistema</p>
+                </div>
+                <div class="card-footer ">
+                    <a href="{% url 'crud' %} " class="btn btn-secondary ">Ir para página</a>
+                </div>
+            </div>
+            <div class="card card text-center">
+                <div class=" card-body ">
+                    <h5 class="card-title ">Monitorar Voos</h5>
+                    <p class="card-text ">Acesse esta página caso queira monitorar um voo. realizando as atualizações dinâmicas sobre o voo (ex: status)</p>
+                </div>
+                <div class="card-footer ">
+                    <a href="{% url 'monitoramento' %} " class="btn btn-secondary ">Ir para página</a>
+                </div>
+            </div>
+            <div class="card card text-center ">
+                <div class="card-body ">
+                    <h5 class="card-title ">Gerar Relatório de Voo</h5>
+                    <p class="card-text ">Acesse esta página caso queria gerar um novo relatório de voo (ex: atrasos, partidas e chegadas etc.)</p>
+                </div>
+                <div class="card-footer ">
+                    <a href="{% url 'relatorio' %} " class="btn btn-secondary ">Ir para página</a>
+                </div>
+            </div>
         </div>
     </div>
+
 </body>
 
 </html>
