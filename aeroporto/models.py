@@ -1,9 +1,10 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Voo(models.Model):
     idVoo = models.IntegerField(primary_key=True, unique=True)
-    codigoVoo = models.IntegerField(max_length=100, null=False)
+    codigoVoo = models.IntegerField(max_length=100, null=False, unique=True)
     companhiaAerea = models.CharField(max_length=100, null=False)
     partidaPrevista = models.DateTimeField(null=False)
     partidaReal = models.DateTimeField(null=True)
@@ -15,6 +16,10 @@ class Voo(models.Model):
     aeroportoDestino = models.CharField(max_length=100, null=False)
     class Meta:
         db_table = 'voos'
+        
+    def get_absolute_url(self):
+        return reverse('crud')
+    
 
 
 class Usuario(models.Model):
