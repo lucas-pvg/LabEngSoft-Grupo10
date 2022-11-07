@@ -43,7 +43,7 @@
                     <p class="card-text ">Este relatório fornece as informações de partidas e chegadas previstas comparadas ao tempos reais a partir dos voos registrados no sistema</p>
                 </div>
                 <div class="card-footer ">
-                    <a href="#" class="btn btn-secondary ">Gerar Relatório</a>
+                    <a href="{% url 'relatorio_previstas' %}" class="btn btn-secondary ">Gerar Relatório</a>
                 </div>
             </div>
             <div class="card card text-center">
@@ -52,7 +52,7 @@
                     <p class="card-text ">Este relatório fornece as informações de tempos totais reais de voo a partir dos voos registrados no sistema</p>
                 </div>
                 <div class="card-footer ">
-                    <a href="#" class="btn btn-secondary ">Gerar Relatório</a>
+                    <a href="{% url 'relatorio_reais' %}" class="btn btn-secondary ">Gerar Relatório</a>
                 </div>
             </div>
             <div class="card card text-center ">
@@ -61,7 +61,7 @@
                     <p class="card-text ">Este relatório fornece as informações de atrasos de voo levando em consideração o tempo previsto e o tempo real de voo a partir dos voos registrados no sistema</p>
                 </div>
                 <div class="card-footer ">
-                    <a href="#" class="btn btn-secondary ">Gerar Relatório</a>
+                    <a href="{% url 'relatorio_atrasos' %}" class="btn btn-secondary ">Gerar Relatório</a>
                 </div>
             </div>
         </div>

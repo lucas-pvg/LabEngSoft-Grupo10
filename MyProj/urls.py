@@ -27,5 +27,8 @@ urlpatterns = [
     path('crud/excluir_voo/<int:pk>', views.DeleteVooView.as_view(), name='excluir_voo'),
     path('monitoramento/', views.voo_search_view),
     path('monitoramento/', views.monitoramentoview, name='monitoramento'),
-    path('relatorio', views.relatorioview, name='relatorio')
+    path('relatorio', views.relatorioview, name='relatorio'),
+    path('relatorios/previstas_pdf', views.relatorio_previstas, name='relatorio_previstas'),
+    path('relatorios/reais_pdf', views.relatorio_reais, name='relatorio_reais'),
+    path('relatorios/atrasos_pdf', views.relatorio_atrasos, name='relatorio_atrasos'),
 ]

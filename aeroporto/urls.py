@@ -11,5 +11,6 @@ urlpatterns = [
     path('crud/excluir_voo/<int:pk>', DeleteVooView.as_view(), name='excluir_voo'),
     path('monitoramento/', monitoramentoview, name='monitoramento'),
     path('relatorios/', relatorioview, name='relatorios'),
+    path('relatorios/previstas_pdf', relatorio_previstas, name='relatorio_previstas'),
 ]
 
