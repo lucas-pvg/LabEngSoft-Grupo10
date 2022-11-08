@@ -78,6 +78,76 @@ class UsuarioModelTest(TestCase):
         self.assertEqual(pre_length, pre_length-1)
 
 
+# class CrudViewTest(TestCase):
+#     client = Client()
+    
+#     @classmethod
+#     def setUpTestData(cls):
+#         Voo.objects.create(
+#             idVoo = 1234,
+#             codigoVoo = 1234,
+#             companhiaAerea = 'LabSoft',
+#             partidaPrevista = make_aware(datetime.strptime('01/11/22 14:00', '%d/%m/%y %H:%M')),
+#             chegadaPrevista = make_aware(datetime.strptime('01/11/22 17:40', '%d/%m/%y %H:%M')),
+#             rota = 'nenhuma',
+#             status = 'Aguardo',
+#             aeroportoOrigem = 'CGH',
+#             aeroportoDestino = 'BSB',
+#         )
+    
+#     def test_adicionar_voo(self):
+#         voo_data = {
+#             'idVoo': 1234,
+#             'codigoVoo': 1234,
+#             'companhiaAerea': 'LabSoft',
+#             'partidaPrevista': '2022-11-01 14:00:00',
+#             'chegadaPrevista': '2022-11-01 18:00:00',
+#             'rota': 'nenhuma',
+#             'aeroportoOrigem': 'CGH',
+#             'aeroportoDestino': 'GRU'
+#         }
+        
+#         response = self.client.post(
+#             '/crud/adicionar_voo/',
+#             voo_data,
+#             content_type='application/x-www-form-urlencoded'
+#         )
+        
+#         if response.status_code == 200:
+#             Voo_object = Voo.objects.get(codigoVoo=1234)
+        
+#         self.assertEqual(response.status_code, 200)
+#         self.assertEqual(Voo_object.codigoVoo, 1234)
+    
+#     def test_editar_voo(self):
+#         voo_data = {
+#             'codigoVoo': 76,
+#             'companhiaAerea': 'LabSoft',
+#             'partidaPrevista': '2022-11-01 14:00:00',
+#             'chegadaPrevista': '2022-11-01 18:00:00',
+#             'rota': 'alguma',
+#             'aeroportoOrigem': 'CGH',
+#             'aeroportoDestino': 'GRU'
+#         }
+        
+#         response_get = self.client.get('/crud/editar_voo/1234')
+#         if response_get.status_code == 200:
+#             response_post = self.client.post('/crud/editar_voo/1234', voo_data)
+        
+#         request = HttpRequest()
+#         request.POST = voo_data
+#         form = VooEditForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#         else: print(form.errors)
+#         print(form.is_valid())
+            
+#         self.assertEqual(response_post.status_code, 200)
+    
+#     def test_excluir_voo(self):
+#         pass
+
+
 class MonitoramentoViewTest(TestCase):
     client = Client()
     
