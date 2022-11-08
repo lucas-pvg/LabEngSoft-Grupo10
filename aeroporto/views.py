@@ -1,4 +1,3 @@
-from ctypes.wintypes import VARIANT_BOOL
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -11,8 +10,8 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 
-# Views do CRUD
 
+# Views do CRUD
 class CrudView(ListView):
     model = Voo 
     template_name = 'crud.html'
@@ -42,8 +41,8 @@ class DeleteVooView(DeleteView):
     template_name = 'excluir_voo.html'
     success_url = reverse_lazy('crud')
     
-# Views do relatório
 
+# Views do relatório
 def relatorio_previstas(request):
     # Create Bytestream buffer
     buf = io.BytesIO()
@@ -177,7 +176,6 @@ def relatorio_atrasos(request):
     
 
 # Create your views here.
-
 def loginview(request):
     return render(request, 'login.html')
 
@@ -192,9 +190,11 @@ def relatorioview(request):
     return render(request, 'relatorio.html')
 
 
+# View do monitoramento
 def voo_search_view(request):
     query_dict = request.GET
     voo_object = None
+    
     try:
         query = int(query_dict.get('voo'))
     except:
