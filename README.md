@@ -5,7 +5,7 @@ para instalação e execução do aplicativo na sua máquina local.
 
 ## Pré-Requisitos
 
-Primeiramente, é necessário que se tenha Python 3.6+ instalado em sua máquina, bem como git e o Django. Para a instalação das ferramentas necessárias, refira-se às referências específicas de cada uma, disponíveis na iternet.
+Primeiramente, é necessário que se tenha Python 3.6+ instalado em sua máquina, bem como git, o Django e a biblioteca python reportlab. Para a instalação das ferramentas necessárias, refira-se às referências específicas de cada uma, disponíveis na iternet.
 
 Caso você deseje rodar a aplicação em um ambiente virtual, primeiramente selecione a pasta desejada para armazenar o projeto e, dentro dela, após a instalação do Pyhton, crie um ambiente virtual executanto os seguintes comandos:
 
@@ -43,4 +43,9 @@ python manage.py runserver
 Dessa forma, seu terminal deve executar o aplicativo em um servidor local e retornar o caminho para que você possa acessá-lo. Ele deve se parecer com algo assim 
 `http://127.0.0.1:8000/`, tendo em mente que o número do servidor pode mudar, apresentando a tela de login do sistema de monitoramento. Para acessar a página principal do sistema, basta abrir seu navegador e colar este endereço finalizado por `/main`e o aplicativo será executado na sua tela, ou seja `http://127.0.0.1:8000/main`.
 
-Com o projeto aberto em sua máquina, é possível acessar as demais telas tanto realizando o login e navegando na própria aplicação quanto acessando diretamente cada página substituindo o final `/main` pelas outras telas disponíveis neste projeto.
+Com o projeto aberto em sua máquina, é possível acessar as demais telas tanto realizando o login e navegando na própria aplicação quanto acessando diretamente cada página substituindo o final `/main` pelas outras telas disponíveis neste projeto, sendo elas:
+
+* `/main` - tela principal
+* `/crud` - tela de CRUD para operações de voo
+* `/monitoramento/` - tela de monitoramento de voo
+* `/relatorio` - tela de relatórios
