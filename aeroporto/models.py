@@ -4,7 +4,7 @@ from django.urls import reverse
 # Create your models here.
 class Voo(models.Model):
     idVoo = models.IntegerField(primary_key=True, unique=True)
-    codigoVoo = models.IntegerField(max_length=100, null=False, unique=True)
+    codigoVoo = models.IntegerField(null=False, unique=True)
     companhiaAerea = models.CharField(max_length=100, null=False)
     partidaPrevista = models.DateTimeField(null=False)
     partidaReal = models.DateTimeField(null=True)
