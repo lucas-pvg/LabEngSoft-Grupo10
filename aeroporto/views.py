@@ -30,17 +30,10 @@ class EditVooView(UpdateView):
     form_class = VooEditForm
     template_name = 'editar_voo.html'
     
-    def getInfos(request):
-        
-        voo = Voo.objects.all()
-        
-        return render(request, 'filmes_detalhes.html')
-    
 class DeleteVooView(DeleteView):
     model = Voo
     template_name = 'excluir_voo.html'
     success_url = reverse_lazy('crud')
-    
 
 # Views do relatório
 def relatorio_previstas(request):
@@ -207,3 +200,21 @@ def voo_search_view(request):
     }
     
     return render(request, 'monitoramento/voosearch.html', context=context)
+
+class UpdateVooStatusView(UpdateView):
+    model = Voo
+    form_class = VooUpdateStatusForm
+    template_name = 'monitoramento/atualizar_status_voo.html'
+    success_url = reverse_lazy('monitoramento')
+    
+class UpdateVooDepartureView(UpdateView):
+    model = Voo
+    form_class = VooUpdateDepartureForm
+    template_name = 'monitoramento/atualizar_partida_voo.html'
+    success_url = reverse_lazy('monitoramento')
+    
+class UpdateVooArrivalView(UpdateView):
+    model = Voo
+    form_class = VooUpdateArrivalForm
+    template_name = 'monitoramento/atualizar_chegada_voo.html'
+    success_url = reverse_lazy('monitoramento')
