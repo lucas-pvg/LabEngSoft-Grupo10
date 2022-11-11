@@ -45,6 +45,11 @@
                     <th scope="col ">Código do Voo</th>
                     <th scope="col ">Companhia Aérea</th>
                     <th scope="col ">Rota</th>
+                    <th scope="col">Partida Prevista</th>
+                    <th scope="col">Partida Real</th>
+                    <th scope="col">Chegada Prevista</th>
+                    <th scope="col">Partida Real</th>
+                    <th scope="col">Status</th>
                     <th scope="col ">Aeroporto de Origem</th>
                     <th scope="col ">Aeroporto de Destino</th>
                     <th scope="col"></th>
@@ -57,6 +62,11 @@
                     <th scope="row "><a href="{% url 'ver_voo'  voo.pk %} ">{{ voo.codigoVoo }}</a></th>
                     <td> {{ voo.companhiaAerea }} </td>
                     <td> {{ voo.rota }} </td>
+                    <td> {{ voo.partidaPrevista }} </td>
+                    <td> {{ voo.partidaReal }} </td>
+                    <td> {{ voo.chegadaPrevista }} </td>
+                    <td> {{ voo.chegadaReal }} </td>
+                    <td> {{ voo.status }} </td>
                     <td> {{ voo.aeroportoOrigem }} </td>
                     <td> {{ voo.aeroportoDestino }} </td>
                     <td> <a href="{% url 'editar_voo' voo.pk %} ">Editar</a> </td>
