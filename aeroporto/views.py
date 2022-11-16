@@ -220,7 +220,7 @@ class UpdateVooStatusView(UpdateView):
         if status == 'Aguardo':
             choices = [('Aguardo', 'Aguardo'), ('Embarcando', 'Embarcando'), ('Cancelado', 'Cancelado')]
         elif status == 'Cancelado':
-            choices = [('Cancelado', 'Cancelado')]
+            choices = [('Cancelado', 'Cancelado'), ('Aguardo', 'Aguardo')]
         elif status == 'Embarcando':
             choices = [('Embarcando', 'Embarcando'), ('Programado', 'Programado')]
         elif status == 'Programado':
