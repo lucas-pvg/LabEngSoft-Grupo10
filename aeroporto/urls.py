@@ -10,7 +10,7 @@ urlpatterns = [
     path('crud/editar_voo/<int:pk>', EditVooView.as_view(), name='editar_voo'),
     path('crud/excluir_voo/<int:pk>', DeleteVooView.as_view(), name='excluir_voo'),
     path('monitoramento/', monitoramentoview, name='monitoramento'),
-    path('monitoramento/atualizar_voo/<int:pk>', UpdateVooView, name='atualizar_voo'),
+    path('monitoramento/atualizar_voo/<int:pk>', EditVooView.as_view(), name='atualizar_voo'),
     path('relatorios/', relatorioview, name='relatorios'),
     path('relatorios/previstas_pdf', relatorio_previstas, name='relatorio_previstas'),
 ]
