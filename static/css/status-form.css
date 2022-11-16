@@ -12,6 +12,10 @@
     margin-bottom: 0;
 }
 
+.form-group-status p {
+    margin-bottom: 0;
+}
+
 .btn {
     width: 6rem;
     margin-right: .5rem;
