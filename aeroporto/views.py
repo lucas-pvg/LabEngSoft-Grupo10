@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import *
-from .forms import *
-
+from django.contrib import messages
 from django.http import FileResponse
-import io
+
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
+
+from .models import *
+from .forms import *
+import io
 
 
 # Views do CRUD
@@ -185,8 +187,9 @@ def relatorioview(request):
 
 # View do monitoramento
 def voo_search_view(request):
-    query_dict = request.GET
     voo_object = None
+    query = None
+    query_dict = request.GET
     
     try:
         query = int(query_dict.get('voo'))
@@ -194,11 +197,13 @@ def voo_search_view(request):
         query = None
 
     if query is not None:
+        try:
             voo_object = Voo.objects.get(codigoVoo=query)
-    context = {
-        "voo": voo_object
-    }
-    
+        except:
+            voo_object = None
+            messages.error(request, f'Não foi encontrado Voo com o código {query}')
+            
+    context = {"voo": voo_object}
     return render(request, 'monitoramento/voosearch.html', context=context)
 
 class UpdateVooStatusView(UpdateView):

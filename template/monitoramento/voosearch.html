@@ -4,9 +4,13 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/monitoramento.css' %}">
+
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -39,6 +43,14 @@
     </div>
 
     <div class="container">
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+
         <div class="search-box row">
             <div class="col-md titulo">
                 <h1 titulo-text>Tela de Monitoramento</h1>
