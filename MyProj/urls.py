@@ -25,7 +25,7 @@ urlpatterns = [
     path('crud/adicionar_voo/', views.AddVooView.as_view(), name='adicionar_voo'),
     path('crud/editar_voo/<int:pk>', views.EditVooView.as_view(), name='editar_voo'),
     path('crud/excluir_voo/<int:pk>', views.DeleteVooView.as_view(), name='excluir_voo'),
-    path('monitoramento/', views.voo_search_view),
+    path('monitoramento/', views.voo_search_view, name='monitoramento_voo'),
     path('monitoramento/', views.monitoramentoview, name='monitoramento'),
     path('monitoramento/atualizar_status_voo/<int:pk>', views.UpdateVooStatusView.as_view(), name='atualizar_status_voo'),
     path('monitoramento/atualizar_partida_voo/<int:pk>', views.UpdateVooDepartureView.as_view(), name='atualizar_partida_voo'),

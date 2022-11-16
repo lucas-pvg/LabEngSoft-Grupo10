@@ -203,23 +203,35 @@ def voo_search_view(request):
             voo_object = None
             messages.error(request, f'Não foi encontrado Voo com o código {query}')
             
-    context = {"voo": voo_object}
+    context = {'voo': voo_object}
     return render(request, 'monitoramento/voosearch.html', context=context)
+
 
 class UpdateVooStatusView(UpdateView):
     model = Voo
     form_class = VooUpdateStatusForm
     template_name = 'monitoramento/atualizar_status_voo.html'
-    success_url = reverse_lazy('monitoramento')
     
+    def get_success_url(self):
+        codigoVoo=self.kwargs['pk']
+        return f'{reverse_lazy("monitoramento")}?voo={codigoVoo}'
+
+
 class UpdateVooDepartureView(UpdateView):
     model = Voo
     form_class = VooUpdateDepartureForm
     template_name = 'monitoramento/atualizar_partida_voo.html'
-    success_url = reverse_lazy('monitoramento')
+    
+    def get_success_url(self):
+        codigoVoo=self.kwargs['pk']
+        return f'{reverse_lazy("monitoramento")}?voo={codigoVoo}'
+    
     
 class UpdateVooArrivalView(UpdateView):
     model = Voo
     form_class = VooUpdateArrivalForm
     template_name = 'monitoramento/atualizar_chegada_voo.html'
-    success_url = reverse_lazy('monitoramento')
+    
+    def get_success_url(self):
+        codigoVoo=self.kwargs['pk']
+        return f'{reverse_lazy("monitoramento")}?voo={codigoVoo}'
