@@ -9,7 +9,7 @@ class Voo(models.Model):
     partidaReal = models.DateTimeField(null=True)
     chegadaPrevista = models.DateTimeField(null=False)
     chegadaReal = models.DateTimeField(null=True)
-    status = models.CharField(max_length=100, null=True)
+    status = models.CharField(max_length=100, null=False, default='Aguardo')
     rota = models.CharField(max_length=100, null=True)
     aeroportoOrigem = models.CharField(max_length=100, null=False)
     aeroportoDestino = models.CharField(max_length=100, null=False)
