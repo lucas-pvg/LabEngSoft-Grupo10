@@ -36,13 +36,14 @@ class DeleteVooView(DeleteView):
     template_name = 'excluir_voo.html'
     success_url = reverse_lazy('crud')
     
-voo_list = []
+voo_list_general = []
 
 # Views do relatório
 def relatorioview(request):
     template_name = 'relatorio.html'
     object_list = Voo.objects.all()
-    voo_list.append(VooFilter(request.GET, queryset = object_list))
+    voo_list = (VooFilter(request.GET, queryset = object_list))
+    object_list = voo_list.qs
     
     context =   {
         'object_list': object_list,
@@ -73,7 +74,7 @@ def relatorio_previstas(request):
         ' '
     ]
     
-    if voos:
+    if len(voo_list_general) == 0:
         for voo in voos:
             lines.append(" ")
             lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
@@ -83,7 +84,7 @@ def relatorio_previstas(request):
             lines.append("Aeroporto de Origem:" + " " + str(voo.aeroportoOrigem))
             lines.append("Aeroporto de Destino:" + " " + str(voo.aeroportoDestino))
     else:
-        for voo in voo_list:
+        for voo in voo_list_general:
             lines.append(" ")
             lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
             lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
@@ -126,7 +127,7 @@ def relatorio_reais(request):
         ' '
     ]
     
-    if voos:
+    if len(voo_list_general) == 0:
         for voo in voos:
             lines.append(" ")
             lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
@@ -136,7 +137,7 @@ def relatorio_reais(request):
             lines.append("Aeroporto de Origem:" + " " + str(voo.aeroportoOrigem))
             lines.append("Aeroporto de Destino:" + " " + str(voo.aeroportoDestino))
     else:
-        for voo in voo_list:
+        for voo in voo_list_general:
             lines.append(" ")
             lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
             lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
@@ -179,7 +180,7 @@ def relatorio_atrasos(request):
         ' '
     ]
     
-    if voos:
+    if len(voo_list_general) == 0:
         for voo in voos:
             lines.append(" ")
             lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
@@ -191,7 +192,7 @@ def relatorio_atrasos(request):
             lines.append("Aeroporto de Origem:" + " " + str(voo.aeroportoOrigem))
             lines.append("Aeroporto de Destino:" + " " + str(voo.aeroportoDestino))
     else:
-        for voo in voo_list:
+        for voo in voo_list_general:
             lines.append(" ")
             lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
             lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
