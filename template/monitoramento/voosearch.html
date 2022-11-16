@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/monitoramento.css' %}">
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function(element) {
+                return new bootstrap.Tooltip(element);
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -82,15 +90,24 @@
                     </tr>
                     <tr>
                         <th scope="row">Status do Voo</th>
-                        <td> {{ voo.status}} </td>
+                        <td scope="col">
+                            {% if voo.pk %}
+                            <a href="{% url 'atualizar_status_voo' voo.pk %}">{{ voo.status }}</a> {% endif %}
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">Partida Real do Voo</th>
-                        <td> {{ voo.partidaReal}} </td>
+                        <td scope="col">
+                            {% if voo.pk %}
+                            <a href="{% url 'atualizar_partida_voo' voo.pk %}">{{ voo.partidaReal }}</a> {% endif %}
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">Chegada Real do Voo</th>
-                        <td> {{ voo.chegadaReal}} </td>
+                        <td scope="col">
+                            {% if voo.pk %}
+                            <a href="{% url 'atualizar_chegada_voo' voo.pk %}">{{ voo.chegadaReal }}</a> {% endif %}
+                        </td>
                     </tr>
                 </tbody>
             </table>
