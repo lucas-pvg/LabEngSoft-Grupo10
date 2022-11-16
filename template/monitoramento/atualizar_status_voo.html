@@ -6,6 +6,7 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/status-form.css' %}">
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
 </head>
 
@@ -37,7 +38,7 @@
         <br>
 
         <table>
-            <div class="form-group">
+            <div class="form-group-status">
                 <form method="POST">
                     {% csrf_token %} {{ form.as_p}}
                     <br>
