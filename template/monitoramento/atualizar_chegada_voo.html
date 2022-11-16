@@ -42,7 +42,7 @@
                     {% csrf_token %} {{ form.as_p}}
                     <br>
                     <button class="btn btn-secondary">Salvar</button>
-                    <a class="btn btn-secondary" href="{% url 'monitoramento' %}">Cancelar</a>
+                    <a class="btn btn-secondary" href="{% url 'monitoramento' %}?voo={{ voo.codigoVoo }}">Cancelar</a>
                 </form>
             </div>
         </table>
