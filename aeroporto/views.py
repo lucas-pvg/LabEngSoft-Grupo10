@@ -211,6 +211,33 @@ class UpdateVooStatusView(UpdateView):
     model = Voo
     form_class = VooUpdateStatusForm
     template_name = 'monitoramento/atualizar_status_voo.html'
+ 
+    def get(self, request, pk):
+        codigoVoo = pk
+        voo_object = Voo.objects.get(codigoVoo=codigoVoo)
+        status = voo_object.status
+        
+        if status == 'Aguardo':
+            choices = [('Aguardo', 'Aguardo'), ('Embarcando', 'Embarcando'), ('Cancelado', 'Cancelado')]
+        elif status == 'Cancelado':
+            choices = [('Cancelado', 'Cancelado')]
+        elif status == 'Embarcando':
+            choices = [('Embarcando', 'Embarcando'), ('Programado', 'Programado')]
+        elif status == 'Programado':
+            choices = [('Programado', 'Programado'), ('Taxiando', 'Taxiando')]
+        elif status == 'Taxiando':
+            choices = [('Taxiando', 'Taxiando'), ('Pronto', 'Pronto')]
+        elif status == 'Pronto':
+            choices = [('Pronto', 'Pronto'), ('Autorizado', 'Autorizado')]
+        elif status == 'Autorizado':
+            choices = [('Autorizado', 'Autorizado'), ('Em voo', 'Em voo')]
+        elif status == 'Em voo':
+            choices = [('Em voo', 'Em voo'), ('Aterrissado', 'Aterrissado')]
+        elif status == 'Aterrissado':
+            choices = [('Aterrissado', 'Aterrissado'), ('Aguardo', 'Aguardo')]
+        
+        form = self.form_class(choices=choices)
+        return render(request, self.template_name, {'form': form, 'voo': voo_object})
     
     def get_success_url(self):
         codigoVoo=self.kwargs['pk']
