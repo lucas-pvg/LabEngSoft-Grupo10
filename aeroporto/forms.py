@@ -35,13 +35,18 @@ class VooEditForm(forms.ModelForm):
         }
 
 class VooUpdateStatusForm(forms.ModelForm):
+    def __init__(self, choices=None, *args, **kwargs):
+        super(VooUpdateStatusForm, self).__init__(*args, **kwargs)
+        self.fields['status'].choices = choices
+        self.fields['status'].widget.choices = choices
     class Meta:
         model = Voo
         fields = ('status',)
-        
+        status = forms.Select(choices=[()], attrs={'class': 'form-control', 'placeholder': 'Insira o status atual do voo'})
         widgets = {
-            'status': forms.Select(choices=choices, attrs={'class': 'form-control', 'placeholder': 'Insira o status atual do voo'}),
+            'status': forms.Select(choices=[()], attrs={'class': 'form-control', 'placeholder': 'Insira o status atual do voo'}),
         }
+        
         
 class VooUpdateDepartureForm(forms.ModelForm):
     class Meta:

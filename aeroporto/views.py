@@ -1,14 +1,16 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import *
-from .forms import *
-
+from django.contrib import messages
 from django.http import FileResponse
-import io
+
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
+
+from .models import *
+from .forms import *
+import io
 
 
 # Views do CRUD
@@ -185,8 +187,9 @@ def relatorioview(request):
 
 # View do monitoramento
 def voo_search_view(request):
-    query_dict = request.GET
     voo_object = None
+    query = None
+    query_dict = request.GET
     
     try:
         query = int(query_dict.get('voo'))
@@ -194,27 +197,68 @@ def voo_search_view(request):
         query = None
 
     if query is not None:
+        try:
             voo_object = Voo.objects.get(codigoVoo=query)
-    context = {
-        "voo": voo_object
-    }
-    
+        except:
+            voo_object = None
+            messages.error(request, f'Não foi encontrado Voo com o código {query}')
+            
+    context = {'voo': voo_object}
     return render(request, 'monitoramento/voosearch.html', context=context)
+
 
 class UpdateVooStatusView(UpdateView):
     model = Voo
     form_class = VooUpdateStatusForm
     template_name = 'monitoramento/atualizar_status_voo.html'
-    success_url = reverse_lazy('monitoramento')
+ 
+    def get(self, request, pk):
+        codigoVoo = pk
+        voo_object = Voo.objects.get(codigoVoo=codigoVoo)
+        status = voo_object.status
+        
+        if status == 'Aguardo':
+            choices = [('Aguardo', 'Aguardo'), ('Embarcando', 'Embarcando'), ('Cancelado', 'Cancelado')]
+        elif status == 'Cancelado':
+            choices = [('Cancelado', 'Cancelado'), ('Aguardo', 'Aguardo')]
+        elif status == 'Embarcando':
+            choices = [('Embarcando', 'Embarcando'), ('Programado', 'Programado')]
+        elif status == 'Programado':
+            choices = [('Programado', 'Programado'), ('Taxiando', 'Taxiando')]
+        elif status == 'Taxiando':
+            choices = [('Taxiando', 'Taxiando'), ('Pronto', 'Pronto')]
+        elif status == 'Pronto':
+            choices = [('Pronto', 'Pronto'), ('Autorizado', 'Autorizado')]
+        elif status == 'Autorizado':
+            choices = [('Autorizado', 'Autorizado'), ('Em voo', 'Em voo')]
+        elif status == 'Em voo':
+            choices = [('Em voo', 'Em voo'), ('Aterrissado', 'Aterrissado')]
+        elif status == 'Aterrissado':
+            choices = [('Aterrissado', 'Aterrissado'), ('Aguardo', 'Aguardo')]
+        
+        form = self.form_class(choices=choices)
+        return render(request, self.template_name, {'form': form, 'voo': voo_object})
     
+    def get_success_url(self):
+        codigoVoo=self.kwargs['pk']
+        return f'{reverse_lazy("monitoramento")}?voo={codigoVoo}'
+
+
 class UpdateVooDepartureView(UpdateView):
     model = Voo
     form_class = VooUpdateDepartureForm
     template_name = 'monitoramento/atualizar_partida_voo.html'
-    success_url = reverse_lazy('monitoramento')
+    
+    def get_success_url(self):
+        codigoVoo=self.kwargs['pk']
+        return f'{reverse_lazy("monitoramento")}?voo={codigoVoo}'
+    
     
 class UpdateVooArrivalView(UpdateView):
     model = Voo
     form_class = VooUpdateArrivalForm
     template_name = 'monitoramento/atualizar_chegada_voo.html'
-    success_url = reverse_lazy('monitoramento')
+    
+    def get_success_url(self):
+        codigoVoo=self.kwargs['pk']
+        return f'{reverse_lazy("monitoramento")}?voo={codigoVoo}'
