@@ -55,6 +55,7 @@
             <div class="col-md titulo">
                 <h1 titulo-text>Tela de Monitoramento</h1>
             </div>
+
             <form class="row g-3 search-form col-auto">
                 <div class="col-auto mb-3">
                     <label for="formGroupExampleInput" class="form-label">Digite o número do voo:</label>
@@ -64,6 +65,10 @@
                     <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
                 </div>
             </form>
+        </div>
+
+        <div class="monitorar-all">
+            <a href="{% url 'monitoramento_all' %}"><span>Monitorar Todos os Voos</span></a>
         </div>
 
         <div class="container-xl table-voo">

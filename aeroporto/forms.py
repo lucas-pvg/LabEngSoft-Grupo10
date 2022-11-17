@@ -1,13 +1,15 @@
 from django import forms
 from .models import Voo
 
-choices = [('Embarcando', 'Embarcando'), ('Cancelado', 'Cancelado'), ('Programado', 'Programado'), ('Taxiando', 'Taxiando'), 
-         ('Pronto', 'Pronto'), ('Autorizado', 'Autorizado'), ('Em voo', 'Em voo'), ('Aterrissado', 'Aterrissado')]
+# choices = [('Embarcando', 'Embarcando'), ('Cancelado', 'Cancelado'), ('Programado', 'Programado'), ('Taxiando', 'Taxiando'), 
+#          ('Pronto', 'Pronto'), ('Autorizado', 'Autorizado'), ('Em voo', 'Em voo'), ('Aterrissado', 'Aterrissado')]
+
+choices = [('Sim', 'Sim'), ('Não', 'Não')]
 
 class VooForm(forms.ModelForm):
     class Meta:
         model = Voo
-        fields = ('codigoVoo', 'companhiaAerea', 'partidaPrevista', 'chegadaPrevista', 'rota', 'aeroportoOrigem', 'aeroportoDestino')
+        fields = ('codigoVoo', 'companhiaAerea', 'partidaPrevista', 'chegadaPrevista', 'rota', 'aeroportoOrigem', 'aeroportoDestino', 'partindo')
         
         widgets = {
             'codigoVoo': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Insira o Código do Voo'}),
@@ -16,7 +18,8 @@ class VooForm(forms.ModelForm):
             'chegadaPrevista': forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder': 'Ano-Mês-Dia Hora:Minuto:Segundo'}),
             'rota': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insira a Rota do voo'}),
             'aeroportoOrigem': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insira o Aeroporto de Origem'}),
-            'aeroportoDestino' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insira o Aeroporto de Destino'}),
+            'aeroportoDestino': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insira o Aeroporto de Destino'}),
+            'partindo': forms.Select(choices=choices, attrs={'class': 'form-control', 'placeholder': 'O Voo está partindo?'}),
         }
         
 class VooEditForm(forms.ModelForm):

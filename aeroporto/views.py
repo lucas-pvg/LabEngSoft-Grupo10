@@ -185,6 +185,26 @@ def relatorioview(request):
     return render(request, 'relatorio.html')
 
 
+class MonitoramentoAllView(ListView):
+    model = Voo
+    template_name = 'monitoramento/monitoramento_all.html'
+    
+    def get(self, request):
+        voo_object = Voo.objects.all()
+        partindo = list()
+        chegando = list()
+        
+        for voo in voo_object:
+            if voo.partindo == 'Sim':
+                partindo.append(voo)
+            elif voo.partindo == 'Não':
+                chegando.append(voo)
+        
+        partindo.sort(key=lambda x: x.partidaPrevista)
+        chegando.sort(key=lambda x: x.chegadaPrevista)
+        return render(request, self.template_name, {'chegando': chegando, 'partindo': partindo})
+
+
 # View do monitoramento
 def voo_search_view(request):
     voo_object = None
@@ -217,24 +237,31 @@ class UpdateVooStatusView(UpdateView):
         voo_object = Voo.objects.get(codigoVoo=codigoVoo)
         status = voo_object.status
         
-        if status == 'Aguardo':
-            choices = [('Aguardo', 'Aguardo'), ('Embarcando', 'Embarcando'), ('Cancelado', 'Cancelado')]
-        elif status == 'Cancelado':
-            choices = [('Cancelado', 'Cancelado'), ('Aguardo', 'Aguardo')]
-        elif status == 'Embarcando':
-            choices = [('Embarcando', 'Embarcando'), ('Programado', 'Programado')]
-        elif status == 'Programado':
-            choices = [('Programado', 'Programado'), ('Taxiando', 'Taxiando')]
-        elif status == 'Taxiando':
-            choices = [('Taxiando', 'Taxiando'), ('Pronto', 'Pronto')]
-        elif status == 'Pronto':
-            choices = [('Pronto', 'Pronto'), ('Autorizado', 'Autorizado')]
-        elif status == 'Autorizado':
-            choices = [('Autorizado', 'Autorizado'), ('Em voo', 'Em voo')]
-        elif status == 'Em voo':
-            choices = [('Em voo', 'Em voo'), ('Aterrissado', 'Aterrissado')]
-        elif status == 'Aterrissado':
-            choices = [('Aterrissado', 'Aterrissado'), ('Aguardo', 'Aguardo')]
+        if voo_object.partindo == 'Sim':
+            if status == 'Aguardo':
+                choices = [('Aguardo', 'Aguardo'), ('Embarcando', 'Embarcando'), ('Cancelado', 'Cancelado')]
+            elif status == 'Cancelado':
+                choices = [('Cancelado', 'Cancelado'), ('Aguardo', 'Aguardo')]
+            elif status == 'Embarcando':
+                choices = [('Embarcando', 'Embarcando'), ('Programado', 'Programado')]
+            elif status == 'Programado':
+                choices = [('Programado', 'Programado'), ('Taxiando', 'Taxiando')]
+            elif status == 'Taxiando':
+                choices = [('Taxiando', 'Taxiando'), ('Pronto', 'Pronto')]
+            elif status == 'Pronto':
+                choices = [('Pronto', 'Pronto'), ('Autorizado', 'Autorizado')]
+            elif status == 'Autorizado':
+                choices = [('Autorizado', 'Autorizado'), ('Em voo', 'Em voo')]
+            elif status == 'Em voo':
+                choices = [('Em voo', 'Em voo'), ('Aguardo', 'Aguardo')]
+                
+        elif voo_object.partindo == 'Não':
+            if status == 'Aguardo':
+                choices = [('Aguardo', 'Aguardo'), ('Em voo', 'Em voo')]
+            elif status == 'Em voo':
+                choices = [('Em voo', 'Em voo'), ('Aterrissado', 'Aterrissado')]
+            elif status == 'Aterrissado':
+                choices = [('Aterrissado', 'Aterrissado'), ('Aguardo', 'Aguardo')]
         
         form = self.form_class(choices=choices)
         return render(request, self.template_name, {'form': form, 'voo': voo_object})

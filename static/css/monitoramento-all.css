@@ -1,0 +1,21 @@
+h3 {
+    margin-bottom: 2rem;
+}
+
+.table-box {
+    position: relative;
+}
+
+.table-chegada {
+    width: 40vw;
+    text-align: center;
+    position: absolute;
+    left: 7vw;
+}
+
+.table-partida {
+    width: 40vw;
+    text-align: center;
+    position: absolute;
+    right: 7vw;
+}
