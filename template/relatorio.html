@@ -39,29 +39,20 @@
         <div class="card-group tabela">
             <div class="card card text-center">
                 <div class="card-body ">
-                    <h5 class="card-title ">Partidas e Chegadas Previstas</h5>
-                    <p class="card-text ">Este relatório fornece as informações de partidas e chegadas previstas comparadas ao tempos reais a partir dos voos registrados no sistema</p>
+                    <h5 class="card-title ">Relatório de Partidas</h5>
+                    <p class="card-text ">Este relatório fornece as informações de partidas de voos do Aeroporto</p>
                 </div>
                 <div class="card-footer ">
-                    <a href="{% url 'relatorio_previstas' %}" class="btn btn-secondary ">Escolher Relatório</a>
+                    <a href="{% url 'relatorio_partidas' %}" class="btn btn-secondary ">Escolher Relatório</a>
                 </div>
             </div>
             <div class="card card text-center">
                 <div class=" card-body ">
-                    <h5 class="card-title ">Tempos Reais de Voo</h5>
-                    <p class="card-text ">Este relatório fornece as informações de tempos totais reais de voo a partir dos voos registrados no sistema</p>
+                    <h5 class="card-title ">Relatório de Chegadas</h5>
+                    <p class="card-text ">Este relatório fornece as informações de partidas de voos do Aeroporto</p>
                 </div>
                 <div class="card-footer ">
-                    <a href="{% url 'relatorio_reais' %}" class="btn btn-secondary ">Escolher Relatório</a>
-                </div>
-            </div>
-            <div class="card card text-center ">
-                <div class="card-body ">
-                    <h5 class="card-title ">Atrasos</h5>
-                    <p class="card-text ">Este relatório fornece as informações de atrasos de voo levando em consideração o tempo previsto e o tempo real de voo a partir dos voos registrados no sistema</p>
-                </div>
-                <div class="card-footer ">
-                    <a href="{% url 'relatorio_atrasos' %}" class="btn btn-secondary ">Escolher Relatório</a>
+                    <a href="{% url 'relatorio_chegadas' %}" class="btn btn-secondary ">Escolher Relatório</a>
                 </div>
             </div>
         </div>
