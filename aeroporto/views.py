@@ -38,9 +38,41 @@ class DeleteVooView(DeleteView):
     
 voo_list_general = []
 
+
+
 # Views do relatório
+
 def relatorioview(request):
-    template_name = 'relatorio.html'
+    return render(request, 'relatorio.html')
+
+def relatorio_atrasos_view(request):
+    template_name = 'relatorio_atrasos.html'
+    object_list = Voo.objects.all()
+    voo_list = (VooFilter(request.GET, queryset = object_list))
+    object_list = voo_list.qs
+    
+    context =   {
+        'object_list': object_list,
+        'filter': voo_list
+    }
+    
+    return render(request, template_name, context)
+
+def relatorio_previstas_view(request):
+    template_name = 'relatorio_previstas.html'
+    object_list = Voo.objects.all()
+    voo_list = (VooFilter(request.GET, queryset = object_list))
+    object_list = voo_list.qs
+    
+    context =   {
+        'object_list': object_list,
+        'filter': voo_list
+    }
+    
+    return render(request, template_name, context)
+
+def relatorio_reais_view(request):
+    template_name = 'relatorio_reais.html'
     object_list = Voo.objects.all()
     voo_list = (VooFilter(request.GET, queryset = object_list))
     object_list = voo_list.qs
@@ -74,17 +106,7 @@ def relatorio_previstas(request):
         ' '
     ]
     
-    if len(voo_list_general) == 0:
-        for voo in voos:
-            lines.append(" ")
-            lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
-            lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
-            lines.append("Partida Prevista:" + " " + str(voo.partidaPrevista))
-            lines.append("Chegada Prevista:" + " " + str(voo.chegadaPrevista))
-            lines.append("Aeroporto de Origem:" + " " + str(voo.aeroportoOrigem))
-            lines.append("Aeroporto de Destino:" + " " + str(voo.aeroportoDestino))
-    else:
-        for voo in voo_list_general:
+    for voo in voos:
             lines.append(" ")
             lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
             lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
@@ -127,17 +149,7 @@ def relatorio_reais(request):
         ' '
     ]
     
-    if len(voo_list_general) == 0:
-        for voo in voos:
-            lines.append(" ")
-            lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
-            lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
-            lines.append("Partida Real:" + " " + str(voo.partidaReal))
-            lines.append("Chegada Real:" + " " + str(voo.chegadaReal))
-            lines.append("Aeroporto de Origem:" + " " + str(voo.aeroportoOrigem))
-            lines.append("Aeroporto de Destino:" + " " + str(voo.aeroportoDestino))
-    else:
-        for voo in voo_list_general:
+    for voo in voos:
             lines.append(" ")
             lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
             lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
@@ -180,19 +192,7 @@ def relatorio_atrasos(request):
         ' '
     ]
     
-    if len(voo_list_general) == 0:
-        for voo in voos:
-            lines.append(" ")
-            lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
-            lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
-            lines.append("Partida Prevista:" + " " + str(voo.partidaPrevista))
-            lines.append("Partida Real:" + " " + str(voo.partidaReal))
-            lines.append("Chegada Prevista:" + " " + str(voo.chegadaPrevista))
-            lines.append("Chegada Real:" + " " + str(voo.chegadaReal))
-            lines.append("Aeroporto de Origem:" + " " + str(voo.aeroportoOrigem))
-            lines.append("Aeroporto de Destino:" + " " + str(voo.aeroportoDestino))
-    else:
-        for voo in voo_list_general:
+    for voo in voos:
             lines.append(" ")
             lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
             lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
