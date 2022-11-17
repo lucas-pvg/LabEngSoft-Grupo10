@@ -14,8 +14,8 @@ p {
 
 .search-box {
     margin: 1rem;
-    margin-left: 0rem;
     margin-top: 2rem;
+    margin-bottom: 0;
 }
 
 .btn {
@@ -44,4 +44,31 @@ p {
     display: inline-block;
     height: 100%;
     vertical-align: middle;
+}
+
+.monitorar-all {
+    display: inline-block;
+    width: 13rem;
+    height: 3.5rem;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    background-color: #007bff;
+}
+
+.monitorar-all a {
+    display: block;
+    width: inherit;
+    height: inherit;
+    position: relative;
+    text-decoration: none;
+    color: white;
+}
+
+.monitorar-all a span {
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    inset: 0;
+    margin: auto;
 }
