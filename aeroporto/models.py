@@ -13,6 +13,7 @@ class Voo(models.Model):
     rota = models.CharField(max_length=100, null=True)
     aeroportoOrigem = models.CharField(max_length=100, null=False)
     aeroportoDestino = models.CharField(max_length=100, null=False)
+    partindo = models.CharField(max_length=100, null=False)
     class Meta:
         db_table = 'voos'
         
