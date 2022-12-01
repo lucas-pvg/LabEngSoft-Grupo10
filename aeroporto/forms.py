@@ -68,3 +68,12 @@ class VooUpdateArrivalForm(forms.ModelForm):
         widgets = {
             'chegadaReal': forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder': 'Ano-Mês-Dia Hora:Minuto:Segundo'}),
         }
+        
+class VooReportForm(forms.ModelForm):
+    class Meta:
+        model = Voo
+        fields = ('companhiaAerea',)
+
+        widgets = {
+            'companhiaAerea': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insira a Companhia Aérea'}),
+        }

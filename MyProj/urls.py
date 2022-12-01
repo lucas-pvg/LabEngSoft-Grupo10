@@ -31,8 +31,9 @@ urlpatterns = [
     path('monitoramento/atualizar_status_voo/<int:pk>', views.UpdateVooStatusView.as_view(), name='atualizar_status_voo'),
     path('monitoramento/atualizar_partida_voo/<int:pk>', views.UpdateVooDepartureView.as_view(), name='atualizar_partida_voo'),
     path('monitoramento/atualizar_chegada_voo/<int:pk>', views.UpdateVooArrivalView.as_view(), name='atualizar_chegada_voo'),
-    path('relatorio', views.relatorioview, name='relatorio'),
-    path('relatorios/previstas_pdf', views.relatorio_previstas, name='relatorio_previstas'),
-    path('relatorios/reais_pdf', views.relatorio_reais, name='relatorio_reais'),
-    path('relatorios/atrasos_pdf', views.relatorio_atrasos, name='relatorio_atrasos'),
+    path('relatorio/', views.relatorioview, name='relatorio'),
+    path('relatorios/chegadas', views.relatorio_chegadas_view, name='relatorio_chegadas'),
+    path('relatorios/partidas', views.relatorio_partidas_view, name='relatorio_partidas'),
+    path('relatorios/chegadas_pdf', views.relatorio_chegadas, name='relatorio_chegadas_pdf'),
+    path('relatorios/partidas_pdf', views.relatorio_partidas, name='relatorio_partidas_pdf'),
 ]

@@ -8,9 +8,15 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 
+from .filters import VooFilter
 from .models import *
 from .forms import *
+
+from dateutil.parser import parse
+from datetime import timedelta
 import io
+
+voo_list_general = []
 
 
 # Views do CRUD
@@ -37,8 +43,42 @@ class DeleteVooView(DeleteView):
     template_name = 'excluir_voo.html'
     success_url = reverse_lazy('crud')
 
+
 # Views do relatório
-def relatorio_previstas(request):
+def relatorioview(request):
+    return render(request, 'relatorio.html')
+    
+def relatorio_chegadas_view(request):
+    template_name = 'relatorio_chegadas.html'
+    object_list = Voo.objects.all()
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+    
+    if start_date and end_date:
+        end_date = parse(end_date) + timedelta(1)
+        object_list = object_list.filter(
+            chegadaReal__range=[start_date, end_date]
+        )
+
+    context =  {'object_list': object_list}
+    return render(request, template_name, context)
+
+def relatorio_partidas_view(request):
+    template_name = 'relatorio_partidas.html'
+    object_list = Voo.objects.all()
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+
+    if start_date and end_date:
+        end_date = parse(end_date) + timedelta(1)
+        object_list = object_list.filter(
+            partidaReal__range=[start_date, end_date]
+        )
+
+    context =  {'object_list': object_list}
+    return render(request, template_name, context=context)
+
+def relatorio_partidas(request):
     # Create Bytestream buffer
     buf = io.BytesIO()
     
@@ -50,12 +90,12 @@ def relatorio_previstas(request):
     textob.setTextOrigin(inch, inch)
     textob.setFont("Helvetica", 14)
     
-    # Designate The Model
+    # Object
     voos = Voo.objects.all()
     
     # Create blank list
     lines = [
-        'Relatório de Partidas e Chegadas Previstas de Voo'
+        'Relatório de Partidas de Voo'
         ' '
     ]
     
@@ -64,10 +104,10 @@ def relatorio_previstas(request):
         lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
         lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
         lines.append("Partida Prevista:" + " " + str(voo.partidaPrevista))
-        lines.append("Chegada Prevista:" + " " + str(voo.chegadaPrevista))
+        lines.append("Partida Real:" + " " + str(voo.partidaReal))
         lines.append("Aeroporto de Origem:" + " " + str(voo.aeroportoOrigem))
         lines.append("Aeroporto de Destino:" + " " + str(voo.aeroportoDestino))
-        
+
     # Loop
     for line in lines:
         textob.textLine(line)
@@ -81,7 +121,7 @@ def relatorio_previstas(request):
     # Return
     return FileResponse(buf, as_attachment=True, filename='tempos_previstos.pdf')
 
-def relatorio_reais(request):
+def relatorio_chegadas(request):
     # Create Bytestream buffer
     buf = io.BytesIO()
     
@@ -93,12 +133,12 @@ def relatorio_reais(request):
     textob.setTextOrigin(inch, inch)
     textob.setFont("Helvetica", 14)
     
-    # Designate The Model
+    # Object
     voos = Voo.objects.all()
     
     # Create blank list
     lines = [
-        'Relatório de Tempos Reais de Voo'
+        'Relatório de Chegadas de Voo'
         ' '
     ]
     
@@ -106,9 +146,10 @@ def relatorio_reais(request):
         lines.append(" ")
         lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
         lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
-        lines.append("Partida Real:" + " " + str(voo.partidaReal))
+        lines.append("Chegada Prevista:" + " " + str(voo.chegadaPrevista))
         lines.append("Chegada Real:" + " " + str(voo.chegadaReal))
         lines.append("Aeroporto de Origem:" + " " + str(voo.aeroportoOrigem))
+        lines.append("Aeroporto de Destino:" + " " + str(voo.aeroportoDestino))
         lines.append("Aeroporto de Destino:" + " " + str(voo.aeroportoDestino))
         
     # Loop
@@ -123,51 +164,6 @@ def relatorio_reais(request):
     
     # Return
     return FileResponse(buf, as_attachment=True, filename='tempos_reais.pdf')
-
-def relatorio_atrasos(request):
-    # Create Bytestream buffer
-    buf = io.BytesIO()
-    
-    # Create canvas
-    c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
-    
-    # Create text object
-    textob = c.beginText()
-    textob.setTextOrigin(inch, inch)
-    textob.setFont("Helvetica", 14)
-    
-    # Designate The Model
-    voos = Voo.objects.all()
-    
-    # Create blank list
-    lines = [
-        'Relatório de Atrasos de Voo'
-        ' '
-    ]
-    
-    for voo in voos:
-        lines.append(" ")
-        lines.append("Código do Voo:" + " " + str(voo.codigoVoo))
-        lines.append("Companhia Aérea:" + " " + str(voo.companhiaAerea))
-        lines.append("Partida Prevista:" + " " + str(voo.partidaPrevista))
-        lines.append("Partida Real:" + " " + str(voo.partidaReal))
-        lines.append("Chegada Prevista:" + " " + str(voo.chegadaPrevista))
-        lines.append("Chegada Real:" + " " + str(voo.chegadaReal))
-        lines.append("Aeroporto de Origem:" + " " + str(voo.aeroportoOrigem))
-        lines.append("Aeroporto de Destino:" + " " + str(voo.aeroportoDestino))
-        
-    # Loop
-    for line in lines:
-        textob.textLine(line)
-    
-    # Finishing Up
-    c.drawText(textob)
-    c.showPage()
-    c.save()
-    buf.seek(0)
-    
-    # Return
-    return FileResponse(buf, as_attachment=True, filename='atrasos.pdf')
     
 
 # Create your views here.
@@ -180,9 +176,6 @@ def mainview(request):
 def monitoramentoview(request):
     context = {}
     return render(request, 'monitoramento/monitoramento.html', context=context)
-
-def relatorioview(request):
-    return render(request, 'relatorio.html')
 
 
 class MonitoramentoAllView(ListView):

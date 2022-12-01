@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/relatorio.css' %}">
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+    <div class="nav-container">
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'main'%}">Sistema de Monitoramento de Voo</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'main'%}">Tela Principal<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                        <a class="nav-link" href="{% url 'login'%}">Logout<span class="sr-only">(current)</span></a>
+                </span>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-xl p-5 box-tabela">
+
+        <h2>Relatório de Partidas de Voo</h2>
+
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <form>
+                    <label>
+                        Data Inicial
+                        </label>
+                    <input class="form-control ml-sm-2 mr-sm-2" name="start_date" type="date">
+                    <br>
+                    <label>
+                        Data Final
+                    </label>
+                    <input class="form-control ml-sm-2 mr-sm-2" name="end_date" type="date">
+                    <br>
+                    <button class="btn btn-secondary" type="submit">Filtrar</button>
+                </form>
+            </div>
+
+            <div class="col-md-8">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col ">Companhia Aérea</th>
+                            <th scope="col ">Rota</th>
+                            <th scope="col">Partida Prevista</th>
+                            <th scope="col">Partida Real</th>
+                            <th scope="col ">Aeroporto de Origem</th>
+                            <th scope="col ">Aeroporto de Destino</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        {% for voo in object_list %}
+                        <tr>
+                            <td> {{ voo.companhiaAerea }} </td>
+                            <td> {{ voo.rota }} </td>
+                            <td> {{ voo.partidaPrevista}} </td>
+                            <td> {{ voo.partidaReal }} </td>
+                            <td> {{ voo.aeroportoOrigem }} </td>
+                            <td> {{ voo.aeroportoDestino }} </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <br>
+
+        <a href="{% url 'relatorio_partidas_pdf' %}" class="btn btn-secondary ">Imprimir relatório com todos os dados em PDF</a>
+
+        <br>
+
+        <a href="{% url 'relatorio' %}" class="btn btn-secondary ">Voltar para escolher relatório</a>
+
+    </div>
+
+</body>
+
+</html>
