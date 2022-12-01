@@ -287,6 +287,14 @@ class UpdateVooDepartureView(UpdateView):
     form_class = VooUpdateDepartureForm
     template_name = 'monitoramento/atualizar_partida_voo.html'
     
+    def get(self, request, pk):
+        codigoVoo = pk
+        voo_object = Voo.objects.get(codigoVoo=codigoVoo)
+        status = voo_object.status
+        
+        form = self.form_class(choices=choices)
+        return render(request, self.template_name, {'form': form, 'voo': voo_object})
+    
     def get_success_url(self):
         codigoVoo=self.kwargs['pk']
         return f'{reverse_lazy("monitoramento")}?voo={codigoVoo}'
