@@ -6,6 +6,7 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/add_voo.css' %}">
     <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
 </head>
 
@@ -30,10 +31,17 @@
     </div>
 
     <div class="container-xl p-5">
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+
         <h2>
             Adicionar Novo Voo
         </h2>
-
         <br>
 
         <div class="form-group">

@@ -52,6 +52,7 @@
                     <th scope="col">Status</th>
                     <th scope="col">Aeroporto de Origem</th>
                     <th scope="col">Aeroporto de Destino</th>
+                    <th scope="col">Condição do Voo</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
@@ -69,6 +70,7 @@
                     <td> {{ voo.status }} </td>
                     <td> {{ voo.aeroportoOrigem }} </td>
                     <td> {{ voo.aeroportoDestino }} </td>
+                    <td> {{ voo.condicao }} </td>
                     <td> <a href="{% url 'editar_voo' voo.pk %} ">Editar</a> </td>
                     <td> <a href="{% url 'excluir_voo' voo.pk %} ">Excluir</a> </td>
                 </tr>

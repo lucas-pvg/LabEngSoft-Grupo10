@@ -195,9 +195,9 @@ class MonitoramentoAllView(ListView):
         chegando = list()
         
         for voo in voo_object:
-            if voo.partindo == 'Sim':
+            if voo.condicao == 'Partindo':
                 partindo.append(voo)
-            elif voo.partindo == 'Não':
+            elif voo.condicao == 'Chegando':
                 chegando.append(voo)
         
         partindo.sort(key=lambda x: x.partidaPrevista)
@@ -237,7 +237,7 @@ class UpdateVooStatusView(UpdateView):
         voo_object = Voo.objects.get(codigoVoo=codigoVoo)
         status = voo_object.status
         
-        if voo_object.partindo == 'Sim':
+        if voo_object.condicao == 'Partindo':
             if status == 'Aguardo':
                 choices = [('Aguardo', 'Aguardo'), ('Embarcando', 'Embarcando'), ('Cancelado', 'Cancelado')]
             elif status == 'Cancelado':
@@ -255,7 +255,7 @@ class UpdateVooStatusView(UpdateView):
             elif status == 'Em voo':
                 choices = [('Em voo', 'Em voo'), ('Aguardo', 'Aguardo')]
                 
-        elif voo_object.partindo == 'Não':
+        elif voo_object.condicao == 'Chegando':
             if status == 'Aguardo':
                 choices = [('Aguardo', 'Aguardo'), ('Em voo', 'Em voo')]
             elif status == 'Em voo':

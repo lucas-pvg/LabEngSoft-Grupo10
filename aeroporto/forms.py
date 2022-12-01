@@ -4,12 +4,12 @@ from .models import Voo
 # choices = [('Embarcando', 'Embarcando'), ('Cancelado', 'Cancelado'), ('Programado', 'Programado'), ('Taxiando', 'Taxiando'), 
 #          ('Pronto', 'Pronto'), ('Autorizado', 'Autorizado'), ('Em voo', 'Em voo'), ('Aterrissado', 'Aterrissado')]
 
-choices = [('Sim', 'Sim'), ('Não', 'Não')]
+choices = [('Partindo', 'Partindo'), ('Chegando', 'Chegando')]
 
 class VooForm(forms.ModelForm):
     class Meta:
         model = Voo
-        fields = ('codigoVoo', 'companhiaAerea', 'partidaPrevista', 'chegadaPrevista', 'rota', 'aeroportoOrigem', 'aeroportoDestino', 'partindo')
+        fields = ('codigoVoo', 'companhiaAerea', 'partidaPrevista', 'chegadaPrevista', 'rota', 'aeroportoOrigem', 'aeroportoDestino', 'condicao')
         
         widgets = {
             'codigoVoo': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Insira o Código do Voo'}),
@@ -19,7 +19,7 @@ class VooForm(forms.ModelForm):
             'rota': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insira a Rota do voo'}),
             'aeroportoOrigem': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insira o Aeroporto de Origem'}),
             'aeroportoDestino': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insira o Aeroporto de Destino'}),
-            'partindo': forms.Select(choices=choices, attrs={'class': 'form-control', 'placeholder': 'O Voo está partindo?'}),
+            'condicao': forms.Select(choices=choices, attrs={'class': 'form-control', 'placeholder': 'Condição do Voo'}),
         }
         
 class VooEditForm(forms.ModelForm):
