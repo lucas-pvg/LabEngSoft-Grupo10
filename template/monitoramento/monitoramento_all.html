@@ -13,15 +13,15 @@
 <body>
     <div class="nav-container">
         <nav class="navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="{% url 'main'%}">Sistema de Monitoramento de Voo</a>
+            <a class="navbar-brand" href="{% url 'login'%}">Sistema de Monitoramento de Voo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <!-- <li class="nav-item active">
                         <a class="nav-link" href="{% url 'main'%}">Tela Principal<span class="sr-only">(current)</span></a>
-                    </li>
+                    </li> -->
                 </ul>
                 <span class="navbar-text">
                         <a class="nav-link" href="{% url 'login'%}">Logout<span class="sr-only">(current)</span></a>
@@ -43,8 +43,8 @@
                     <tr>
                         <th scope="col">Código do Voo</th>
                         <th scope="col">Companhia Aérea</th>
-                        <th scope="col">Partida Real</th>
                         <th scope="col">Chegada Prevista</th>
+                        <th scope="col">Chegada Real</th>
                         <th scope="col">Status</th>
                         <th scope="col">Aeroporto de Origem</th>
                     </tr>
@@ -54,8 +54,8 @@
                     <tr>
                         <th scope="row "><a href="{% url 'ver_voo'  voo.pk %} ">{{ voo.codigoVoo }}</a></th>
                         <td> {{ voo.companhiaAerea }} </td>
-                        <td> {{ voo.partidaReal }} </td>
                         <td> {{ voo.chegadaPrevista }} </td>
+                        <td> {{ voo.chegadaReal }} </td>
                         <td> {{ voo.status }} </td>
                         <td> {{ voo.aeroportoOrigem }} </td>
                     </tr>
@@ -73,7 +73,7 @@
                         <th scope="col">Código do Voo</th>
                         <th scope="col">Companhia Aérea</th>
                         <th scope="col">Partida Prevista</th>
-                        <th scope="col">Chegada Prevista</th>
+                        <th scope="col">Partida Real</th>
                         <th scope="col">Status</th>
                         <th scope="col">Aeroporto de Destino</th>
                     </tr>
@@ -84,7 +84,7 @@
                         <th scope="row "><a href="{% url 'ver_voo'  voo.pk %} ">{{ voo.codigoVoo }}</a></th>
                         <td> {{ voo.companhiaAerea }} </td>
                         <td> {{ voo.partidaPrevista }} </td>
-                        <td> {{ voo.chegadaPrevista }} </td>
+                        <td> {{ voo.partidaReal }} </td>
                         <td> {{ voo.status }} </td>
                         <td> {{ voo.aeroportoDestino }} </td>
                     </tr>

@@ -1,8 +1,9 @@
 from django.urls import path, include
 from .views import *
+from members.views import login_view
 
 urlpatterns = [
-    path('', mainview, name='home'),
+    # path('', login_view, name='login'),
     # path('login/', loginview, name='login'),
     path('crud/', CrudView.as_view(), name='crud'),
     path('crud/ver_voo/<int:pk>', DetailVooView.as_view(), name='ver_voo'),

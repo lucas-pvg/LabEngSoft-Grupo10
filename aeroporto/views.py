@@ -185,7 +185,8 @@ def redirect(request):
     elif group.filter(name__in=['torre']).exists():
         return HttpResponseRedirect('monitoramento/')
 
-    return render(request, 'usuario_sem_grupo.html')
+    return HttpResponseRedirect('monitoramento/monitoramento_all')
+    # return render(request, 'usuario_sem_grupo.html')
 
 def mainview(request):
     return render(request, 'main.html')
