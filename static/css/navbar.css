@@ -6,3 +6,8 @@ nav {
     margin-left: 2rem;
     margin-right: 2rem;
 }
+
+.table thead th {
+    vertical-align: top !important;
+    border-bottom: 2px solid #dee2e6;
+}
