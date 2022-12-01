@@ -1,8 +1,12 @@
-from django.shortcuts import render
+from aeroporto.custom_auth_func import piloto, companhia, gerente, operador, torre
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib import messages
-from django.http import FileResponse
+from django.http import FileResponse, HttpResponseRedirect
+
 
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
@@ -167,8 +171,21 @@ def relatorio_chegadas(request):
     
 
 # Create your views here.
-def loginview(request):
-    return render(request, 'login.html')
+def redirect(request):
+    group = request.user.groups.all()
+
+    if group.filter(name__in=['companhia']).exists():
+        return HttpResponseRedirect('monitoramento')
+    elif group.filter(name__in=['gerente']).exists():
+        return HttpResponseRedirect('relatorios')
+    elif group.filter(name__in=['operador']).exists():
+        return HttpResponseRedirect('crud')
+    elif group.filter(name__in=['piloto']).exists():
+        return HttpResponseRedirect('monitoramento')
+    elif group.filter(name__in=['torre']).exists():
+        return HttpResponseRedirect('monitoramento')
+
+    return render(request, 'usuario_sem_grupo.html')
 
 def mainview(request):
     return render(request, 'main.html')
