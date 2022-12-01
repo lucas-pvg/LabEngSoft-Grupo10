@@ -175,15 +175,15 @@ def redirect(request):
     group = request.user.groups.all()
 
     if group.filter(name__in=['companhia']).exists():
-        return HttpResponseRedirect('monitoramento')
+        return HttpResponseRedirect('monitoramento/')
     elif group.filter(name__in=['gerente']).exists():
-        return HttpResponseRedirect('relatorios')
+        return HttpResponseRedirect('relatorio/')
     elif group.filter(name__in=['operador']).exists():
         return HttpResponseRedirect('crud')
     elif group.filter(name__in=['piloto']).exists():
-        return HttpResponseRedirect('monitoramento')
+        return HttpResponseRedirect('monitoramento/')
     elif group.filter(name__in=['torre']).exists():
-        return HttpResponseRedirect('monitoramento')
+        return HttpResponseRedirect('monitoramento/')
 
     return render(request, 'usuario_sem_grupo.html')
 
