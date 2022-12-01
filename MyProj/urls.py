@@ -19,11 +19,7 @@ from aeroporto import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login', views.loginview, name='login'),
-    path('main', views.mainview, name='main'),
-    path('crud', views.crudview, name='crud'),
-    path('monitoramento', views.monitoramentoview, name='monitoramento'),
-    path('relatorio', views.relatorioview, name='relatorio'),
-    path('members/', include('django.contrib.auth.urls')),
-    path('', include('members.urls'))
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('members.urls')),
+    path('', include('aeroporto.urls')),
 ]
