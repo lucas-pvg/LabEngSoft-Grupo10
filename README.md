@@ -66,3 +66,8 @@ Com o projeto aberto em sua máquina, é possível acessar as demais telas tanto
 ## Acessando a Aplicação pelo Servidor 
 
 A aplicação também está disponível em [labsoftg10.pythonanywhere.com](labsoftg10.pythonanywhere.com)
+
+
+## Referências e Documentação do Projeto
+
+As referências teóricas, análises e documentos produzidos ao longo do projeto e usados como base para a sua construção podem ser encontrados dentro do próprio repositório na pasta `references`.
