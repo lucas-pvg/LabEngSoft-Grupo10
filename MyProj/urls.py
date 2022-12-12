@@ -16,15 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from aeroporto import views
-from members.views import login_view
-from django.views.generic.base import TemplateView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.MonitoramentoAllView.as_view(), name='voos'),
-    # path('', login_view, name='login'),
-    path('main', views.mainview, name='main'),
     path('crud', views.CrudView.as_view(), name='crud'),
     path('crud/ver_voo/<int:pk>', views.DetailVooView.as_view(), name='ver_voo'),
     path('crud/adicionar_voo/', views.AddVooView.as_view(), name='adicionar_voo'),
@@ -39,9 +35,7 @@ urlpatterns = [
     path('relatorio/', views.relatorioview, name='relatorio'),
     path('relatorios/chegadas', views.relatorio_chegadas_view, name='relatorio_chegadas'),
     path('relatorios/partidas', views.relatorio_partidas_view, name='relatorio_partidas'),
-    path('relatorios/chegadas_pdf', views.relatorio_chegadas, name='relatorio_chegadas_pdf'),
-    path('relatorios/partidas_pdf', views.relatorio_partidas, name='relatorio_partidas_pdf'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('', include('members.urls')),
-    path('', include('aeroporto.urls')),
+    path('members/', include('django.contrib.auth.urls')),
+    path('members/', include('members.urls')),
+    path('redirect', views.redirect, name='redirect'),
 ]

@@ -1,3 +1,6 @@
+'''
+Funções para criação de usuários de acordo com cada grupo de login
+'''
 def piloto(user):
     return user.groups.filter(name='piloto').exists()
 

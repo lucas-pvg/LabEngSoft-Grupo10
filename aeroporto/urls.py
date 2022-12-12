@@ -15,11 +15,6 @@ urlpatterns = [
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
     
-    # path('crud', crudview, name='crud'),
-    # path('monitoramento', monitoramentoview, name='monitoramento'),
-    # path('relatorios', relatorioview, name='relatorios'),
-    
     path('redirect', redirect, name='redirect'),
-    path('main', mainview, name='main'),
 ]
 

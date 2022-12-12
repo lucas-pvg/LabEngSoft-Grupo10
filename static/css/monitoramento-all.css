@@ -4,18 +4,28 @@ h3 {
 
 .table-box {
     position: relative;
+    font-size: .8rem !important;
+}
+
+.table-chegada, .table-partida {
+    width: 35vw;
+    text-align: center;
+    position: relative;
+    display: inline-block;
 }
 
 .table-chegada {
-    width: 40vw;
-    text-align: center;
-    position: absolute;
+    float: left;
     left: 7vw;
 }
 
 .table-partida {
-    width: 40vw;
-    text-align: center;
-    position: absolute;
+    float: right;
     right: 7vw;
+}
+
+@media (max-width: 1200px) {
+    .table-box {
+        font-size: .6rem !important;
+    }
 }

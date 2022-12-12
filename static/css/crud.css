@@ -17,3 +17,13 @@
 p {
     text-align: center;
 }
+
+.table-box {
+    font-size: .8rem;
+}
+
+@media (max-width: 1200px) {
+    .table-box {
+        font-size: .6rem !important;
+    }
+}

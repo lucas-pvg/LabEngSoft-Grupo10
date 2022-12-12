@@ -1,11 +1,11 @@
 from django import forms
 from .models import Voo
 
-# choices = [('Embarcando', 'Embarcando'), ('Cancelado', 'Cancelado'), ('Programado', 'Programado'), ('Taxiando', 'Taxiando'), 
-#          ('Pronto', 'Pronto'), ('Autorizado', 'Autorizado'), ('Em voo', 'Em voo'), ('Aterrissado', 'Aterrissado')]
-
+# Variáveis de opções de escolha do forms para criação do voo
 choices = [('Partindo', 'Partindo'), ('Chegando', 'Chegando')]
 
+
+# Forms para criação e atualização do voo - CRUD
 class VooForm(forms.ModelForm):
     class Meta:
         model = Voo
@@ -37,6 +37,8 @@ class VooEditForm(forms.ModelForm):
             'aeroportoDestino' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Insira o Aeroporto de Destino'}),
         }
 
+
+# Forms para atualização do voo - Monitoramento
 class VooUpdateStatusForm(forms.ModelForm):
     def __init__(self, choices=None, *args, **kwargs):
         super(VooUpdateStatusForm, self).__init__(*args, **kwargs)
@@ -68,7 +70,9 @@ class VooUpdateArrivalForm(forms.ModelForm):
         widgets = {
             'chegadaReal': forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder': 'Ano-Mês-Dia Hora:Minuto:Segundo'}),
         }
-        
+
+
+# Forms para geração dos relatórios - Relatório
 class VooReportForm(forms.ModelForm):
     class Meta:
         model = Voo

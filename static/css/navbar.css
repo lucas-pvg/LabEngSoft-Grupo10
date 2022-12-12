@@ -3,11 +3,17 @@
 }
 
 nav {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
 }
 
 .table thead th {
     vertical-align: top !important;
     border-bottom: 2px solid #dee2e6;
+}
+
+.navbar-collapse {
+    display: inline;
+    position: absolute;
+    right: 2rem;
 }
