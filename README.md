@@ -57,7 +57,6 @@ Dessa forma, seu terminal deve executar o aplicativo em um servidor local e reto
 
 Com o projeto aberto em sua máquina, é possível acessar as demais telas tanto realizando o login e navegando na própria aplicação quanto acessando diretamente cada página substituindo o final do caminho `http://127.0.0.1:8000/` pelas outras telas disponíveis neste projeto, sendo elas:
 
-* ` ` - tela de monitoramento geral de voos
 * `/members/login` - tela de login
 * `/crud` - tela de CRUD para operações de voo
 * `/monitoramento/` - tela de monitoramento de voo
